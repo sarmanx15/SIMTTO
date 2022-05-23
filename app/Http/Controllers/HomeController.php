@@ -17,14 +17,52 @@ class HomeController extends Controller
         $kamar = \DB::table('kamars')->count('id_ruang');
         $user = \DB::table('users')->count('id_user');
         $kamars = Kamar::All();
+        // $terpakai = $kamars - $kamar;
+        //dd($tanggal);
+        return view(
+            'index3',
+        [
+            'tittle' => 'SIMPATI',
+            'countKamar' => $kamar,
+            'countUser' => $user,
+            'kamar' => $kamars,
+            // 'terpakai' => $terpakai,
+        ]
+        );
+    }
+    public function index2()
+    {
+        $kamar = \DB::table('kamars')->count('id_ruang');
+        $user = \DB::table('users')->count('id_user');
+        $kamars = Kamar::All();
+        // $terpakai = $kamars - $kamar;
+        //dd($tanggal);
+        return view(
+            'index2',
+        [
+            'tittle' => 'SIMPATI',
+            'countKamar' => $kamar,
+            'countUser' => $user,
+            'kamar' => $kamars,
+            // 'terpakai' => $terpakai,
+        ]
+        );
+    }
+    public function index3()
+    {
+        $kamar = \DB::table('kamars')->count('id_ruang');
+        $user = \DB::table('users')->count('id_user');
+        $kamars = Kamar::All();
+        // $terpakai = $kamars - $kamar;
         //dd($tanggal);
         return view(
             'index',
         [
-            'tittle' => 'Dashboard',
+            'tittle' => 'SIMPATI',
             'countKamar' => $kamar,
             'countUser' => $user,
             'kamar' => $kamars,
+            // 'terpakai' => $terpakai,
         ]
         );
     }

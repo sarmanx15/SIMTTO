@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="{{ asset('js/loader.js') }}"></script>
+    @stack('css')
 </head>
 
 <body id="page-top">
@@ -32,7 +33,14 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-gradient-info topbar mb-4 static-top shadow ">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <div class="sidebar-brand-icon">
+                    {{-- <i class="fas fa-laugh-wink"></i> --}}
+                    <img src="{{ asset('img/AWS.png') }}" class="" width="90" alt="">
+                </div>
+            </a>
                 <a class="align-items-center" href="#">
+                    
                     <div class="sidebar-brand-text text-white mx-3 small">SISTEM INFORMASI TEMPAT TIDUR</div>
                     <div class="h3 sidebar-brand-text text-white mx-3 font-weight-bold">RSUD ABDOEL WAHAB SJAHRANIE</div>
                 </a>
@@ -126,6 +134,7 @@
     </script>
     <script src="js/custom.js"></script>
     @yield('footer')
+    @stack('js')
 </body>
 
 </html>

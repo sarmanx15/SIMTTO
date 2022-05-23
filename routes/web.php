@@ -44,6 +44,9 @@ Route::post('/kamar/update', [KamarController::class, 'update'])->name('update.k
 // Login
 Route::get('/log', [LoginController::class, 'index'])->name('login');
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/display1', [HomeController::class, 'index'])->name('home');
+Route::get('/display2', [HomeController::class, 'index2'])->name('home');
+Route::get('/display3', [HomeController::class, 'index3'])->name('home');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('autenticate');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Error

@@ -37,8 +37,8 @@
                         <td>
                             <center>
                                 <a href="kamar/delete/{{$k->id_ruang}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                                <button href="kamar/edit/{{$k->id_ruang}}" class="btn btn-warning btn-sm" id="btn-edit-user" data-toggle="modal" data-target="#editkamar" data-id_ruang="{{$k->id_ruang}}" data-nama_ruang="{{$k->nama}}" data-kelas_perawatan="{{$k->kelas_perawatan}}" data-total="{{$k->total_kamar}}">
-                                    <i class="fa fa-edit"></i></button>
+                                <a href="#" type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editkamar" data-id_ruang="{{$k->id_ruang}}" data-nama_ruang="{{$k->nama}}" data-kelas_perawatan="{{$k->kelas_perawatan}}" data-total="{{$k->total_kamar}}">
+                                    <i class="fa fa-edit"></i></a>
                             </center>
                         </td>
                     </tr>
@@ -101,7 +101,7 @@
     </div>
 </div>
 <!-- Modal Edit Data -->
-<div class="modal fade" id="edituser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="edikamar" tabindex="1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
