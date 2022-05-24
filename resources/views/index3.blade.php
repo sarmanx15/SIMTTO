@@ -41,7 +41,7 @@
                         </thead>
                         <tbody>
                             @foreach ($kamar as $key => $kmr)
-                                <tr @if ($key % 2 == 1) class="bg-info text-white" @endif>
+                                <tr @if ($key % 2 == 1) class="bg-info text-white" @else class="text-gray-900" @endif>
                                     <td class="h4 mb-0 font-weight-normal">{{ $kmr->nama_ruang }}</td>
                                     <td class="h4 mb-0 font-weight-normal">{{ $kmr->kelas_perawatan }}</td>
                                     <td class="h4 mb-0 font-weight-normal">{{ $kmr->total_terisi }}</td>
