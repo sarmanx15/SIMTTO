@@ -33,19 +33,21 @@
                         cellspacing="0">
                         <thead class="bg-gradient-info text-white h3">
                             <th>NAMA KAMAR</th>
+                            <th>KELAS</th>
                             <th>BED TERPAKAI</th>
                             <th>BED KOSONG</th>
                             <th>TOTAL BED</th>
-                            <th>TERAKHIR UPDATE</th>
+                            <!-- <th>TERAKHIR UPDATE</th> -->
                         </thead>
                         <tbody>
                             @foreach ($kamar as $key => $kmr)
                                 <tr @if ($key % 2 == 1) class="bg-info text-white" @endif>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->nama_ruang }}</td>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->total_terisi }}</td>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->sisa_kamar }}</td>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->sisa_kamar }}</td>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->updated_at->diffForhumans() }}</td>
+                                    <td class="h4 mb-0 font-weight-normal">{{ $kmr->nama_ruang }}</td>
+                                    <td class="h4 mb-0 font-weight-normal">{{ $kmr->kelas_perawatan }}</td>
+                                    <td class="h4 mb-0 font-weight-normal">{{ $kmr->total_terisi }}</td>
+                                    <td class="h4 mb-0 font-weight-normal">{{ $kmr->sisa_kamar }}</td>
+                                    <td class="h4 mb-0 font-weight-normal">{{ $kmr->sisa_kamar }}</td>
+                                    <!-- <td class="h4 mb-0 font-weight-bold">{{ $kmr->updated_at->diffForhumans() }}</td> -->
                                 </tr>
                             @endforeach
 
@@ -66,7 +68,7 @@
         }
 
         tr.even td {
-            background: #77d0c1 !important;
+            background: #5ed162 !important;
         }
 
         .table-responsive {
