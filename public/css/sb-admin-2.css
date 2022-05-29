@@ -141,7 +141,7 @@ dt {
 }
 
 dd {
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem;
     margin-left: 0;
 }
 
@@ -167,11 +167,11 @@ sup {
 }
 
 sub {
-    bottom: -0.25em;
+    bottom: -.25em;
 }
 
 sup {
-    top: -0.5em;
+    top: -.5em;
 }
 
 a {
@@ -328,7 +328,7 @@ legend {
     width: 100%;
     max-width: 100%;
     padding: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem;
     font-size: 1.5rem;
     line-height: inherit;
     color: inherit;
@@ -2161,7 +2161,7 @@ textarea.form-control {
     display: none;
     max-width: 100%;
     padding: 0.25rem 0.5rem;
-    margin-top: 0.1rem;
+    margin-top: .1rem;
     font-size: 0.875rem;
     line-height: 1.5;
     color: #fff;
@@ -2207,7 +2207,7 @@ textarea.form-control.is-valid {
 .custom-select.is-valid {
     border-color: #1cc88a;
     padding-right: calc(0.75em + 2.3125rem);
-    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%235a5c69' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat, #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%231cc88a' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") center right 1.75rem / calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%235a5c69' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat, #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%231cc88a' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e") center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
 }
 
 .was-validated .custom-select:valid:focus,
@@ -2281,7 +2281,7 @@ textarea.form-control.is-valid {
     display: none;
     max-width: 100%;
     padding: 0.25rem 0.5rem;
-    margin-top: 0.1rem;
+    margin-top: .1rem;
     font-size: 0.875rem;
     line-height: 1.5;
     color: #fff;
@@ -2327,7 +2327,7 @@ textarea.form-control.is-invalid {
 .custom-select.is-invalid {
     border-color: #e74a3b;
     padding-right: calc(0.75em + 2.3125rem);
-    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%235a5c69' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat, #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23e74a3b' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23e74a3b' stroke='none'/%3e%3c/svg%3e") center right 1.75rem / calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%235a5c69' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat, #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23e74a3b' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23e74a3b' stroke='none'/%3e%3c/svg%3e") center right 1.75rem/calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
 }
 
 .was-validated .custom-select:invalid:focus,
@@ -5495,7 +5495,7 @@ a.badge-dark.focus {
 }
 
 .progress-bar-striped {
-    background-image: linear-gradient( 45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
     background-size: 1rem 1rem;
 }
 
@@ -5871,7 +5871,7 @@ a.badge-dark.focus {
     line-height: 1;
     color: #000;
     text-shadow: 0 1px 0 #fff;
-    opacity: 0.5;
+    opacity: .5;
 }
 
 .close:hover {
@@ -5881,7 +5881,7 @@ a.badge-dark.focus {
 
 .close:not(:disabled):not(.disabled):hover,
 .close:not(:disabled):not(.disabled):focus {
-    opacity: 0.75;
+    opacity: .75;
 }
 
 button.close {
@@ -6618,7 +6618,7 @@ a.close.disabled {
     background-clip: padding-box;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    opacity: 0.5;
+    opacity: .5;
     transition: opacity 0.6s ease;
 }
 
@@ -6664,8 +6664,8 @@ a.close.disabled {
     border: 0.25em solid currentColor;
     border-right-color: transparent;
     border-radius: 50%;
-    -webkit-animation: 0.75s linear infinite spinner-border;
-    animation: 0.75s linear infinite spinner-border;
+    -webkit-animation: .75s linear infinite spinner-border;
+    animation: .75s linear infinite spinner-border;
 }
 
 .spinner-border-sm {
@@ -6702,8 +6702,8 @@ a.close.disabled {
     background-color: currentColor;
     border-radius: 50%;
     opacity: 0;
-    -webkit-animation: 0.75s linear infinite spinner-grow;
-    animation: 0.75s linear infinite spinner-grow;
+    -webkit-animation: .75s linear infinite spinner-grow;
+    animation: .75s linear infinite spinner-grow;
 }
 
 .spinner-grow-sm {
@@ -10254,8 +10254,8 @@ a:focus {
 }
 
 .bg-gradient-primary {
-    background-color: #6f42c1;
-    background-image: linear-gradient(180deg, #6f42c1 10%, #224abe 100%);
+    background-color: #4e73df;
+    background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
     background-size: cover;
 }
 
@@ -10342,7 +10342,7 @@ a:focus {
 }
 
 .text-xs {
-    font-size: 0.7rem;
+    font-size: .7rem;
 }
 
 .text-lg {
@@ -10459,7 +10459,7 @@ a:focus {
 }
 
 .progress-sm {
-    height: 0.5rem;
+    height: .5rem;
 }
 
 .rotate-15 {
@@ -10492,13 +10492,13 @@ a:focus {
     vertical-align: 0;
     border: 0;
     font-weight: 900;
-    content: "\f105";
-    font-family: "Font Awesome 5 Free";
+    content: '\f105';
+    font-family: 'Font Awesome 5 Free';
 }
 
 .sidebar .nav-item.dropdown.show .dropdown-toggle::after,
 .topbar .nav-item.dropdown.show .dropdown-toggle::after {
-    content: "\f107";
+    content: '\f107';
 }
 
 .sidebar .nav-item .nav-link,
@@ -10511,8 +10511,8 @@ a:focus {
     position: absolute;
     transform: scale(0.7);
     transform-origin: top right;
-    right: 0.25rem;
-    margin-top: -0.25rem;
+    right: .25rem;
+    margin-top: -.25rem;
 }
 
 .sidebar .nav-item .nav-link .img-profile,
@@ -10720,7 +10720,7 @@ a:focus {
 
 .sidebar .nav-item .collapse .collapse-inner,
 .sidebar .nav-item .collapsing .collapse-inner {
-    padding: 0.5rem 0;
+    padding: .5rem 0;
     min-width: 10rem;
     font-size: 0.85rem;
     margin: 0 0 1rem 0;
@@ -10730,7 +10730,7 @@ a:focus {
 .sidebar .nav-item .collapsing .collapse-inner .collapse-header {
     margin: 0;
     white-space: nowrap;
-    padding: 0.5rem 1.5rem;
+    padding: .5rem 1.5rem;
     text-transform: uppercase;
     font-weight: 800;
     font-size: 0.65rem;
@@ -10774,8 +10774,8 @@ a:focus {
 
 .sidebar #sidebarToggle::after {
     font-weight: 900;
-    content: "\f104";
-    font-family: "Font Awesome 5 Free";
+    content: '\f104';
+    font-family: 'Font Awesome 5 Free';
     margin-right: 0.1rem;
 }
 
@@ -10793,8 +10793,8 @@ a:focus {
 }
 
 .sidebar.toggled #sidebarToggle::after {
-    content: "\f105";
-    font-family: "Font Awesome 5 Free";
+    content: '\f105';
+    font-family: 'Font Awesome 5 Free';
     margin-left: 0.25rem;
 }
 
@@ -10907,11 +10907,11 @@ a:focus {
         vertical-align: 0;
         border: 0;
         font-weight: 900;
-        content: "\f107";
-        font-family: "Font Awesome 5 Free";
+        content: '\f107';
+        font-family: 'Font Awesome 5 Free';
     }
     .sidebar .nav-item .nav-link[data-toggle="collapse"].collapsed::after {
-        content: "\f105";
+        content: '\f105';
     }
     .sidebar .sidebar-brand .sidebar-brand-icon i {
         font-size: 2rem;
@@ -11179,8 +11179,8 @@ a:focus {
     padding-right: 1.725rem;
     line-height: 51px;
     font-weight: 900;
-    content: "\f107";
-    font-family: "Font Awesome 5 Free";
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
     color: #d1d3e2;
 }
 
@@ -11189,7 +11189,7 @@ a:focus {
 }
 
 .card .card-header[data-toggle="collapse"].collapsed::after {
-    content: "\f105";
+    content: '\f105';
 }
 
 .chart-area {

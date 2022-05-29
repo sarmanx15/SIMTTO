@@ -174,6 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class ,
 
     ],
 
@@ -229,7 +230,63 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class ,
 
+    ],
+    'debug_blacklist' => [
+        '_ENV' => [
+            'APP_KEY',
+            'DB_PASSWORD',
+            'DB_USERNAME',
+            'DB_DATABASE',
+            'APP_NAME',
+            'APP_ENV',
+            'APP_URL',
+            'MAIL_DRIVER',
+            'MAIL_HOST',
+            'MAIL_PORT',
+            'MAIL_USERNAME',
+            'MAIL_PASSWORD',
+            'MAIL_ENCRYPTION',
+            'REDIS_HOST',
+            'REDIS_PASSWORD',
+            'REDIS_PORT'
+        ],
+
+        '_SERVER' => [
+            'APP_KEY',
+            'DB_PASSWORD',
+            'DB_USERNAME',
+            'DB_DATABASE',
+            'APP_NAME',
+            'APP_ENV',
+            'APP_URL',
+            'MAIL_DRIVER',
+            'MAIL_HOST',
+            'MAIL_PORT',
+            'MAIL_USERNAME',
+            'MAIL_PASSWORD',
+            'MAIL_ENCRYPTION',
+            'REDIS_HOST',
+            'REDIS_PASSWORD',
+            'REDIS_PORT',
+            'SERVER_NAME',
+            'SERVER_ADDR',
+            'SERVER_PORT',
+            'REMOTE_ADDR',
+            'DOCUMENT_ROOT',
+            'REQUEST_SCHEME',
+            'CONTEXT_PREFIX',
+            'CONTEXT_DOCUMENT_ROOT',
+            'SERVER_ADMIN',
+            'SCRIPT_FILENAME',
+            'REMOTE_PORT',
+            'REDIRECT_URL',
+        ],
+
+        '_POST' => [
+            'password',
+        ],
     ],
 
 ];

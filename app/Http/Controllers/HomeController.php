@@ -1,26 +1,36 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Kamar;
 
 use Illuminate\Http\Request;
-use App\Models\Kamar;
 
 class HomeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        $kamar = \DB::table('kamars')->count('id_ruang');
-        $user = \DB::table('users')->count('id_user');
+        $kamar = \DB::table('kamars')->count('id');
+        $user = \DB::table('users')->count('id');
         $kamars = Kamar::All();
         // $terpakai = $kamars - $kamar;
         //dd($tanggal);
         return view(
-            'index3',
+            'backend.dashboard',
         [
             'tittle' => 'SIMPATI',
             'countKamar' => $kamar,
@@ -29,107 +39,6 @@ class HomeController extends Controller
             // 'terpakai' => $terpakai,
         ]
         );
-    }
-    public function index2()
-    {
-        $kamar = \DB::table('kamars')->count('id_ruang');
-        $user = \DB::table('users')->count('id_user');
-        $kamars = Kamar::All();
-        // $terpakai = $kamars - $kamar;
-        //dd($tanggal);
-        return view(
-            'index2',
-        [
-            'tittle' => 'SIMPATI',
-            'countKamar' => $kamar,
-            'countUser' => $user,
-            'kamar' => $kamars,
-            // 'terpakai' => $terpakai,
-        ]
-        );
-    }
-    public function index3()
-    {
-        $kamar = \DB::table('kamars')->count('id_ruang');
-        $user = \DB::table('users')->count('id_user');
-        $kamars = Kamar::All();
-        // $terpakai = $kamars - $kamar;
-        //dd($tanggal);
-        return view(
-            'index',
-        [
-            'tittle' => 'SIMPATI',
-            'countKamar' => $kamar,
-            'countUser' => $user,
-            'kamar' => $kamars,
-            // 'terpakai' => $terpakai,
-        ]
-        );
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // return view('backend.dashboard');
     }
 }

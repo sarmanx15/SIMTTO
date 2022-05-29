@@ -1,22 +1,8 @@
 <?php
 
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\DataRequestController;
-use App\Http\Controllers\FormRequestController;
-use App\Http\Controllers\KamarController;
-use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\mainController;
-use App\Http\Controllers\NotifikasiController;
-use App\Http\Controllers\PelayananController;
-use App\Http\Controllers\PembelianController;
-use App\Http\Controllers\PenjualanController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PasienController;
-use App\Http\Controllers\PasienKamarController;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Events\BedPushed;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,25 +14,44 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-// main
-Route::get('/dashboard', [mainController::class, 'index'])->middleware('admin');
-// User
-Route::get('/user', [UserController::class, 'index'])->name('user')->middleware('admin');
-Route::post('/user/create', [userController::class, 'create'])->middleware('admin');
-Route::get('/user/delete/{id}', [userController::class, 'delete'])->middleware('admin');
-Route::post('/user/update', [userController::class, 'update'])->name('update.user')->middleware('admin');
-// Kamar
-Route::get('/kamar', [KamarController::class, 'index'])->name('kamar')->middleware('admin');
-Route::post('/kamar/create', [KamarController::class, 'create'])->middleware('admin');
-Route::get('/kamar/delete/{id}', [KamarController::class, 'delete'])->middleware('admin');
-Route::post('/kamar/update', [KamarController::class, 'update'])->name('update.kamar')->middleware('admin');
 
-// Login
-Route::get('/log', [LoginController::class, 'index'])->name('login');
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/display1', [HomeController::class, 'index'])->name('home');
-Route::get('/display2', [HomeController::class, 'index2'])->name('home');
-Route::get('/display3', [HomeController::class, 'index3'])->name('home');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('autenticate');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-// Error
+// Route::get('/', [App\Http\Controllers\FrontendController::class , 'index'])->name('/');
+Route::get('/p', function () {
+    BedPushed::dispatch();
+    return view('welcome');
+});
+Route::get('/', [App\Http\Controllers\FrontController::class , 'index'])->name('homepage');
+
+Auth::routes([
+    'register' => false
+]);
+
+Route::middleware(['auth'])->group(function () {
+Route::get('/home', [App\Http\Controllers\HomeController::class , 'index'])->name('home');
+
+    Route::resource('categories', App\Http\Controllers\CategoryController::class);
+    Route::resource('tags', App\Http\Controllers\TagController::class);
+
+        Route::resource('kelas', App\Http\Controllers\KelasController::class);
+
+    Route::resource('kamar', App\Http\Controllers\KamarController::class);
+    Route::resource('user', App\Http\Controllers\UserController::class);
+    Route::get('profil', [App\Http\Controllers\ProfilController::class, 'edit'])->name('profile.edit');
+    Route::put('profil', [App\Http\Controllers\ProfilController::class, 'update'])->name('profile.update');
+
+    // Manage Posts
+    Route::get('posts/trash', [App\Http\Controllers\PostController::class , 'trash'])->name('posts.trash');
+    Route::post('posts/trash/{id}/restore', [App\Http\Controllers\PostController::class , 'restore'])->name('posts.restore');
+    Route::delete('posts/{id}/delete-permanent', [App\Http\Controllers\PostController::class , 'deletePermanent'])->name('posts.deletePermanent');
+    Route::resource('posts', App\Http\Controllers\PostController::class);
+
+
+Route::get('post/{slug}', [App\Http\Controllers\FrontController::class, 'show'])->name('show');
+Route::get('category/{category:slug}', [App\Http\Controllers\FrontController::class, 'category'])->name('category');
+Route::get('tag/{tag:slug}', [App\Http\Controllers\FrontController::class, 'tag'])->name('tag');
+});
+
+Route::get('/test', function () {
+    event(new \App\Events\BedPushed());
+    dd('Event fired.');
+});

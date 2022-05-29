@@ -3,72 +3,121 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Kamar;
 use Illuminate\Http\Request;
+use Alert;
 use Illuminate\Support\Facades\Hash;
+
+
 
 class UserController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $users = User::all();
-        $countUser = \DB::table('users')->count();
-        return view(
-            'admin.user.Muser',
-            [
-                'User' => $users,
-                'countUser' => $countUser,
-                'tittle' => 'Kelolah User'
-            ]
-        );
+
+        $user = User::all();
+        return view('backend.user.index', ['user' => $user]);
     }
 
-    public function create(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'roles' => $request->roles
-        ]);
-        $notifikasi = array(
-            'pesan' => 'User berhasil ditambahkan',
-            'alert' => 'success',
-        );
-
-        return redirect('/user')->with($notifikasi);
+        //
     }
 
-    public function delete($id)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // dd($request);
+        $this->validate($request, [
+            'name' => 'required',
+
+            'email' => 'required|email|unique:users,email',
+
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'admin' => 'required',
+
+            // 'role' => 'required'
+        ]);
+        
+        $input = $request->all();
+
+        $input['password'] = Hash::make($input['password']);
+
+
+        User::create($input);
+        Alert::success('Sukses', 'Data Berhasil Disimpan');
+
+        return redirect()->back();
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function show(User $user)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(User $user)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $user->delete();
-        $notifikasi = array(
-            'pesan' => 'User berhasil dihapus',
-            'alert' => 'success',
-        );
-        return redirect('/user')->with($notifikasi);
-    }
-
-    public function update(Request $request)
-    {
-        $user = User::find($request->id_user);
-        $user->id_user = $request->id_user;
+        $user->id = $request->id;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->kamar = $request->kamar;
-        $user->roles = $request->roles;
+        $user->admin = $request->admin;
         $user->save();
-        $notifikasi = array(
-            'pesan' => 'User berhasil diedit',
-            'alert' => 'success',
-        );
-        $reqKamar = $request->kamar;
-        $kamar = Kamar::find($reqKamar);
-        $kamar->total_terisi += 1;
-        $kamar->sisa_kamar = $kamar->total_kamar - $kamar->total_terisi;
-        $kamar->save(); 
-        return redirect('/user')->with($notifikasi);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+       $user = User::findOrFail($id);
+        $user->delete();
+        Alert::success('Congrats', 'Data Berhasil Dihapus');
+
+        return redirect()->route('user.index');
     }
 }
