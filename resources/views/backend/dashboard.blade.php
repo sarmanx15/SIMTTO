@@ -1,5 +1,17 @@
 @extends('layouts.app',['title' => __('Admin Dashboard')])
 @section('content')
+<h1 class="h3 mb-0 text-gray-800">DASHBOARD SIMPATI AWS</h1>
+    <p class="h6 mb-4">Selamat Datang <strong>{{ Auth::user()->name }}</strong>, Semoga Harimu menyenangkan...</p>
+
+
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show my-1" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 <div class="row">
     <div class="col mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
