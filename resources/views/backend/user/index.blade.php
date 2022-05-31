@@ -46,6 +46,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Username</th>
                             <th scope="col">Role</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -56,6 +57,7 @@
                                 <th scope="row">{{ ++$key }}</th>
                                 <td><strong>{{ $item->name }}</strong></td>
                                 <td>{{ $item->email }}</td>
+                                <td>{{ $item->username }}</td>
                                 <td class="text-success">{{ $item->admin == 1 ? 'Administrator' : 'Petugas' }} </td>
                                 <td>
                                     <button class="btn btn-primary btn-sm" data-toggle="modal"
@@ -99,6 +101,12 @@
                                                     <input type="text" name="email" class="form-control" id="label"
                                                         value="{{ $item->email }}" required>
                                                 </div>
+
+                                                <div class="form-group">
+                                                    <label for="label">Username</label>
+                                                    <input type="text" name="username" class="form-control" id="label"
+                                                        value="{{ $item->username }}" required>
+                                               </div>
                                                 <div class="form-group">
                                                     <label for="label">Password</label>
                                                     <input type="password" name="password" class="form-control"
@@ -155,6 +163,10 @@
                         <div class="form-group">
                             <label for="label">Email</label>
                             <input type="text" name="email" class="form-control" id="label" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="label">Username</label>
+                            <input type="text" name="username" class="form-control" id="label" required>
                         </div>
                         {{-- <div class="form-group">
                             <label for="label">Password</label>

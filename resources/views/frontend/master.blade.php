@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta http-equiv="refresh" content="60">
+    <meta http-equiv="refresh" content="40">
     <link href="{{ asset('img') }}/AWS.png" rel="icon" type="image/png">
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -68,7 +68,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; RSUD AW SJAHRANIE {{ now()->year }} by <a href="https://www.instagram.com/limarus.studio/" target="_blank">Limarus Studio</a> </span>
+                    <span>Copyright &copy; RSUD AW SJAHRANIE {{ now()->year }} by <a href="https://www.instagram.com/rzkyafriani/" target="_blank">KiMan Studio</a> </span>
                 </div>
             </div>
         </footer>

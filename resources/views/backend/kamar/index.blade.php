@@ -34,11 +34,11 @@
                             <th scope="col">Quick Update</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Kelas</th>
-                            <th scope="col">Slot Pria</th>
-                            <th scope="col">Slot Wanita</th>
+                            <!-- <th scope="col">Slot Pria</th> -->
+                            <!-- <th scope="col">Slot Wanita</th> -->
+                            <th scope="col">Kuota Kamar</th>
                             <th scope="col">Kamar Terisi</th>
                             <th scope="col">Sisa Kamar</th>
-                            <th scope="col">Total Kamar</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -54,17 +54,18 @@
                                 </td>
                                 <td>{{ $item->nama_ruang }}</td>
                                 <td>{{ $item->kelas->label }}</td>
-                                <td>{{ $item->pria }}</td>
-                                <td>{{ $item->wanita }}</td>
+                                <!-- <td>{{ $item->pria }}</td> -->
+                                <!-- <td>{{ $item->wanita }}</td> -->
+                                <td>{{ $item->total_kamar }}</td>
                                 <td>{{ $item->total_terisi }}</td>
                                 <td>{{ $item->sisa_kamar }}</td>
-                                <td>{{ $item->total_kamar }}</td>
+                                
 
                                 <td>
                                     <a href="{{ route('kamar.edit', $item->id) }}"
                                         class="btn btn-success btn-sm">Edit</a>
                                     <form method="POST" action="{{ route('kamar.destroy', [$item->id]) }}"
-                                        class="d-inline" onsubmit="return confirm('Move post to trash ?')">
+                                        class="d-inline" onsubmit="return confirm('Yakin Hapus Data ?')">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="submit" value="Delete" class="btn btn-danger btn-sm">
@@ -94,7 +95,7 @@
                                                     <input type="hidden" name="kelas_id"
                                                         value="{{ old('kelas_id') ? old('kelas_id') : $item->kelas_id }}">
 
-                                                    <div class="col-md-4">
+                                                   <!--  <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="pria">Slot Pria</label>
                                                             <input type="text" name="pria"
@@ -107,8 +108,8 @@
                                                                 </div>
                                                             @enderror
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-4">
+                                                    </div> -->
+                                                  <!--   <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="wanita">Slot Wanita</label>
                                                             <input type="text" name="wanita"
@@ -121,7 +122,7 @@
                                                                 </div>
                                                             @enderror
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="total_terisi">Total Terisi</label>
@@ -152,7 +153,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="total_kamar">Total Kamar</label>
+                                                            <label for="total_kamar">Kuota</label>
                                                             <input type="text" name="total_kamar"
                                                                 class="form-control @error('total_kamar') is-invalid @enderror"
                                                                 value="{{ old('total_kamar') ? old('total_kamar') : $item->total_kamar }}"

@@ -30,8 +30,8 @@
                 <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
+                            <th scope="col">No.</th>
+                            <th scope="col">Nama Kelas</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>

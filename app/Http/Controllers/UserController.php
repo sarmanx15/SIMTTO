@@ -43,12 +43,13 @@ class UserController extends Controller
     {
         // dd($request);
         $this->validate($request, [
-            'name' => 'required',
+            'name'      => 'required',
 
-            'email' => 'required|email|unique:users,email',
+            'email'     => 'required|email|unique:users,email',
+            'username'  => 'required|unique:users,username',
 
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'admin' => 'required',
+            'password'  => ['required', 'string', 'min:8', 'confirmed'],
+            'admin'     => 'required',
 
             // 'role' => 'required'
         ]);
@@ -99,6 +100,7 @@ class UserController extends Controller
         $user->id = $request->id;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->username = $request->username;
         $user->password = Hash::make($request->password);
         $user->admin = $request->admin;
         $user->save();

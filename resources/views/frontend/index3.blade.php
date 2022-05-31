@@ -8,7 +8,7 @@
                     <div class="row no-gutters align-items-center text-center">
                         <div class="col mr-2">
                             <div class=" h1 font-weight-bold text-danger text-uppercase mb-1">Informasi Ketersediaan Bed</div>
-                            <div class="h3 mb-0 font-weight-bold text-gray-800">
+                            <div class="h4 mb-0 font-weight-bold text-gray-900">
                                 @php
                                     Carbon\Carbon::setLocale('id');
                                 @endphp
@@ -32,26 +32,28 @@
                 <div class="table-responsive" id="ketersediaan-kamar-grid">
                     <table class="table table-bordered text-center table-stripped table-condensed" width="100%"
                         cellspacing="0">
-                        <thead class="bg-dashboard-gradient-success text-white h3">
+                        <thead class="bg-dashboard-success text-white h4">
                             <th>NAMA KAMAR</th>
                             <th>KELAS</th>
-                            <th>SLOT PRIA</th>
-                            <th>SLOT WANITA</th>
+                            <!-- <th>SLOT PRIA</th> -->
+                            <!-- <th>SLOT WANITA</th> -->
+                            <th>KUOTA</th>
                             <th>BED TERPAKAI</th>
                             <th>BED KOSONG</th>
-                            <th>TOTAL BED</th>
+                            
                             <!-- <th>TERAKHIR UPDATE</th> -->
                         </thead>
                         <tbody>
                             @foreach ($kamar as $key => $kmr)
                                 <tr @if ($key % 2 == 1) class="bg-dashboard-success text-white" @else class="text-gray-900" @endif>
-                                    <td class="h4 mb-0 font-weight-bold">{{ strtoupper($kmr->nama_ruang) }}</td>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->kelas->label }}</td>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->pria }}</td>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->wanita }}</td>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->total_terisi }}</td>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->sisa_kamar }}</td>
-                                    <td class="h4 mb-0 font-weight-bold">{{ $kmr->sisa_kamar }}</td>
+                                    <td class="h4 mb-0 font-weight-normal">{{ strtoupper($kmr->nama_ruang) }}</td>
+                                    <td class="h4 mb-0 font-weight">{{ $kmr->kelas->label }}</td>
+                                    <td class="h4 mb-0 font-weight">{{ $kmr->total_kamar }}</td>
+                                    <!-- <td class="h4 mb-0 font-weight">{{ $kmr->pria }}</td> -->
+                                    <!-- <td class="h4 mb-0 font-weight">{{ $kmr->wanita }}</td> -->
+                                    <td class="h4 mb-0 font-weight">{{ $kmr->total_terisi }}</td>
+                                    <td class="h4 mb-0 font-weight">{{ $kmr->sisa_kamar }}</td>
+                                    
 
                                 </tr>
                             @endforeach

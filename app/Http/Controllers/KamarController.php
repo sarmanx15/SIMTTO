@@ -42,8 +42,8 @@ class KamarController extends Controller
         $validator = Validator::make($request->all(), [
             "nama_ruang" => "required",
             "kelas_id" => "required",
-            "pria" => "required",
-            "wanita" => "required",
+            // "pria" => "required",
+            // "wanita" => "required",
             "total_kamar" => "required",
             "total_terisi" => "required",
             "sisa_kamar" => "required",
@@ -58,8 +58,8 @@ class KamarController extends Controller
 
         $kamar->nama_ruang = $request->nama_ruang;
         $kamar->kelas_id = $request->kelas_id;
-        $kamar->pria = $request->pria;
-        $kamar->wanita = $request->wanita;
+        // $kamar->pria = $request->pria;
+        // $kamar->wanita = $request->wanita;
         $kamar->total_kamar = $request->total_kamar;
         $kamar->total_terisi = $request->total_terisi;
         $kamar->sisa_kamar = $request->sisa_kamar;
@@ -77,7 +77,7 @@ class KamarController extends Controller
      */
     public function show(Kamar $kamar)
     {
-        //
+         //
     }
 
     /**
@@ -103,8 +103,8 @@ class KamarController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "pria" => "required",
-            "wanita" => "required",
+            // "pria" => "required",
+            // "wanita" => "required",
             "total_kamar" => "required",
             "total_terisi" => "required",
             "sisa_kamar" => "required",
@@ -118,8 +118,8 @@ class KamarController extends Controller
         $kamar = Kamar::findOrFail($id);
         $kamar->nama_ruang = $request->nama_ruang;
         $kamar->kelas_id = $request->kelas_id;
-        $kamar->pria = $request->pria;
-        $kamar->wanita = $request->wanita;
+        // $kamar->pria = $request->pria;
+        // $kamar->wanita = $request->wanita;
         $kamar->total_kamar = $request->total_kamar;
         $kamar->total_terisi = $request->total_terisi;
         $kamar->sisa_kamar = $request->sisa_kamar;

@@ -16,16 +16,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'ADMIN PDE',
-            'email' => 'admin@rsudaws.co.id',
-            'password' => bcrypt('12345678'),
-            'admin' => '1'
+            'name'      => 'ADMIN PDE',
+            'email'     => 'admin@rsudaws.co.id',
+            'username'  => 'adminpde',
+            'password'  => bcrypt('12345678'),
+            'admin'     => '1'
         ]);
         User::create([
-            'name' => 'PETUGAS',
-            'email' => 'petugas@rsudaws.co.id',
-            'password' => bcrypt('12345678'),
-            'admin' => '0'
+            'name'      => 'PETUGAS',
+            'email'     => 'petugas@rsudaws.co.id',
+            'username'  => 'adminkamar',
+            'password'  => bcrypt('12345678'),
+            'admin'     => '0'
         ]);
     }
 }

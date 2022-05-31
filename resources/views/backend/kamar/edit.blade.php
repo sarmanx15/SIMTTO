@@ -37,7 +37,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4">
+                       <!--  <div class="col-md-4">
                             <div class="form-group">
                                 <label for="pria">Slot Pria</label>
                                 <input type="text" name="pria" class="form-control @error('pria') is-invalid @enderror"
@@ -48,8 +48,8 @@
                                     </div>
                                 @enderror
                             </div>
-                        </div>
-                        <div class="col-md-4">
+                        </div> -->
+                       <!--  <div class="col-md-4">
                             <div class="form-group">
                                 <label for="wanita">Slot Wanita</label>
                                 <input type="text" name="wanita" class="form-control @error('wanita') is-invalid @enderror"
@@ -60,7 +60,7 @@
                                     </div>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="total_terisi">Total Terisi</label>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="total_kamar">Total Kamar</label>
+                                <label for="total_kamar">Kuota Kamar</label>
                                 <input type="text" name="total_kamar"
                                     class="form-control @error('total_kamar') is-invalid @enderror"
                                     value="{{ old('total_kamar') ? old('total_kamar') : $kamar->total_kamar }}" required>

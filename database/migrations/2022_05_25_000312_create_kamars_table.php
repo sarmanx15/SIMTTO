@@ -20,8 +20,8 @@ class CreateKamarsTable extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->integer('pria');
-            $table->integer('wanita');
+            // $table->integer('pria');
+            // $table->integer('wanita');
             $table->integer('total_kamar');
             $table->integer('total_terisi')->default('0');
             $table->integer('sisa_kamar')->nullable();

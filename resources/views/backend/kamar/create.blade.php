@@ -54,7 +54,8 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4">
+                       <!--  <div class="col-md-4">
+
 
                             <div class="form-group">
                                 <label for="pria">Slot Pria</label>
@@ -79,7 +80,7 @@
                                     </div>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-4">
 
 
@@ -113,7 +114,7 @@
                         <div class="col-md-4">
 
                             <div class="form-group">
-                                <label for="total_kamar">Total Kamar</label>
+                                <label for="total_kamar">Kuota</label>
                                 <input type="text" name="total_kamar"
                                     class="form-control @error('total_kamar') is-invalid @enderror"
                                     value="{{ old('total_kamar') }}" required>
