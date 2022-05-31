@@ -55,6 +55,7 @@ class UserController extends Controller
         ]);
         
         $input = $request->all();
+        // dd($input);
 
         $input['password'] = Hash::make($input['password']);
 

@@ -48,9 +48,10 @@
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
+                                            <label for="username">Username</label>
                                             <input id="username" type="text"
                                                 class="form-control @error('username') is-invalid @enderror" name="username"
-                                                value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                value="{{ old('username') }}" required autocomplete="username" autofocus >
 
                                             @error('username')
                                                 <span class="invalid-feedback" role="alert">
@@ -59,6 +60,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
+                                            <label for="password">Username</label>
                                             <input id="password" type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 name="password" required autocomplete="current-password">
