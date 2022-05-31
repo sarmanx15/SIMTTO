@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="h3 mb-0 text-gray-800">Manajemen Kamar</h1>
-    <p class="mb-4">Berikut ini adalah data yang tersimpan di sistem</p>
+    <p class="mb-4">Sebelum menambahkan data kamar, pastikan data <a href="{{ route('kelas.index') }}">Kelas</a> sudah ada terlebih dahulu. Berikut ini adalah data yang tersimpan di sistem</p>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
         <a href="{{ route('kamar.create') }}" class="btn btn-primary my-3">
