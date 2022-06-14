@@ -39,6 +39,7 @@
                             <th scope="col">Kuota Kamar</th>
                             <th scope="col">Kamar Terisi</th>
                             <th scope="col">Sisa Kamar</th>
+                            <th scope="col">Update</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -59,6 +60,7 @@
                                 <td>{{ $item->total_kamar }}</td>
                                 <td>{{ $item->total_terisi }}</td>
                                 <td>{{ $item->sisa_kamar }}</td>
+                                <td>{{ $item->updated_at }}</td>
                                 
 
                                 <td>
