@@ -1,4 +1,4 @@
-@extends('layouts.app',['title' => __('Tambah Kamar')])
+@extends('layouts.app', ['title' => __('Tambah Kamar')])
 
 @section('content')
     <h1 class="h3 mb-0 text-gray-800">Tambah Data Kamar</h1>
@@ -54,69 +54,39 @@
                                 @enderror
                             </div>
                         </div>
-                       <!--  <div class="col-md-4">
+                        <!--  <div class="col-md-4">
 
 
-                            <div class="form-group">
-                                <label for="pria">Slot Pria</label>
-                                <input name="pria" id="pria" class="form-control @error('pria') is-invalid @enderror"
-                                    required>{{ old('pria') }}</textarea>
-                                @error('pria')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                                    <div class="form-group">
+                                        <label for="pria">Slot Pria</label>
+                                        <input name="pria" id="pria" class="form-control @error('pria') is-invalid @enderror"
+                                            required>{{ old('pria') }}</textarea>
+                                        @error('pria')
+        <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+    @enderror
                                     </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4">
 
-                            <div class="form-group">
-                                <label for="wanita">Slot Wanita</label>
-                                <input name="wanita" id="wanita" class="form-control @error('wanita') is-invalid @enderror"
-                                    required>{{ old('wanita') }}</textarea>
-                                @error('wanita')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                                    <div class="form-group">
+                                        <label for="wanita">Slot Wanita</label>
+                                        <input name="wanita" id="wanita" class="form-control @error('wanita') is-invalid @enderror"
+                                            required>{{ old('wanita') }}</textarea>
+                                        @error('wanita')
+        <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+    @enderror
                                     </div>
-                                @enderror
-                            </div>
-                        </div> -->
-                        <div class="col-md-4">
-
-
-
-                            <div class="form-group">
-                                <label for="total_terisi">Total Terisi</label>
-                                <input type="text" name="total_terisi"
-                                    class="form-control @error('total_terisi') is-invalid @enderror"
-                                    value="{{ old('total_terisi') }}" required>
-                                @error('total_terisi')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-
-                            <div class="form-group">
-                                <label for="sisa_kamar">Sisa Kamar</label>
-                                <input type="text" name="sisa_kamar"
-                                    class="form-control @error('sisa_kamar') is-invalid @enderror"
-                                    value="{{ old('sisa_kamar') }}" required>
-                                @error('sisa_kamar')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
+                                </div> -->
                         <div class="col-md-4">
 
                             <div class="form-group">
                                 <label for="total_kamar">Kuota</label>
-                                <input type="text" name="total_kamar"
-                                    class="form-control @error('total_kamar') is-invalid @enderror"
+                                <input type="number" name="total_kamar"
+                                    class="form-control @error('total_kamar') is-invalid @enderror" ng-model="kuota" oninput="myFunction()"
                                     value="{{ old('total_kamar') }}" required>
                                 @error('total_kamar')
                                     <div class="invalid-feedback">
@@ -125,6 +95,32 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="total_terisi">Total Terisi</label>
+                                <input type="number" name="total_terisi"
+                                    class="form-control @error('total_terisi') is-invalid @enderror" ng-model="isi" oninput="myFunction()"
+                                    value="{{ old('total_terisi') }}" required>
+                                @error('total_terisi')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        {{-- <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="sisa_kamar">Sisa Kamar</label>
+                                <input type="text" name="sisa_kamar"  oninput="myFunction()" class=" form-control @error('sisa_kamar') is-invalid @enderror" id="total_value" value=""
+                                >
+                                @error('sisa_kamar')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div> --}}
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -132,3 +128,4 @@
         </div>
     </div>
 @endsection
+

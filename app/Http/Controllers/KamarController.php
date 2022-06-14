@@ -46,7 +46,7 @@ class KamarController extends Controller
             // "wanita" => "required",
             "total_kamar" => "required",
             "total_terisi" => "required",
-            "sisa_kamar" => "required",
+            // "sisa_kamar" => "required",
         ]);
 
         if ($validator->fails()) {
@@ -58,11 +58,12 @@ class KamarController extends Controller
 
         $kamar->nama_ruang = $request->nama_ruang;
         $kamar->kelas_id = $request->kelas_id;
+        $kamar->user_id = auth()->user()->id;
         // $kamar->pria = $request->pria;
         // $kamar->wanita = $request->wanita;
         $kamar->total_kamar = $request->total_kamar;
         $kamar->total_terisi = $request->total_terisi;
-        $kamar->sisa_kamar = $request->sisa_kamar;
+        $kamar->sisa_kamar = $request->total_kamar - $request->total_terisi;
         $kamar->save();
         Alert::success('Congrats', 'Data Berhasil Disimpan');
 
@@ -107,7 +108,7 @@ class KamarController extends Controller
             // "wanita" => "required",
             "total_kamar" => "required",
             "total_terisi" => "required",
-            "sisa_kamar" => "required",
+            // "sisa_kamar" => "required",
         ]);
 
         if ($validator->fails()) {
@@ -118,11 +119,13 @@ class KamarController extends Controller
         $kamar = Kamar::findOrFail($id);
         $kamar->nama_ruang = $request->nama_ruang;
         $kamar->kelas_id = $request->kelas_id;
+        $kamar->user_id = auth()->user()->id;
         // $kamar->pria = $request->pria;
         // $kamar->wanita = $request->wanita;
         $kamar->total_kamar = $request->total_kamar;
         $kamar->total_terisi = $request->total_terisi;
-        $kamar->sisa_kamar = $request->sisa_kamar;
+        $kamar->sisa_kamar = $request->total_kamar - $request->total_terisi;
+
         $kamar->save();
 
         Alert::success('Congrats', 'Data Berhasil Diupdate');
