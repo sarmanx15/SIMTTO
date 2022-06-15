@@ -60,7 +60,7 @@
                                 <td><strong>{{ $item->name }}</strong></td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->username }}</td>
-                                <td class="text-success">{{ $item->admin == 1 ? 'Administrator' : 'Petugas kamar '.$item->catkamar['label'] }} </td>
+                                <td class="text-success">{!! $item->admin == 1 ? 'Administrator' : 'Petugas kamar '.$item->catkamar['label'] !!} </td>
                                 <td>
                                     <button class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#editModal-{{ $item->id }}">
