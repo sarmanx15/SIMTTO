@@ -144,6 +144,7 @@
     <script src="{{ asset('/vendor/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('/vendor/datatables/responsive.bootstrap4.min.js') }}"></script>
     @yield('js')
+    @stack('js')
 
 </body>
 

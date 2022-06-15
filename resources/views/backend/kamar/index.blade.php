@@ -1,8 +1,9 @@
-@extends('layouts.app',['title' => __('Kamar')])
+@extends('layouts.app', ['title' => __('Kamar')])
 
 @section('content')
     <h1 class="h3 mb-0 text-gray-800">Manajemen Kamar</h1>
-    <p class="mb-4">Berikut ini adalah data yang tersimpan di sistem</p>
+    <p class="mb-4">Sebelum menambahkan data kamar, pastikan data <a href="{{ route('kelas.index') }}">Kelas</a>
+        sudah ada terlebih dahulu. Berikut ini adalah data yang tersimpan di sistem</p>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
 
         <a href="{{ route('kamar.create') }}" class="btn btn-primary my-3">
@@ -39,6 +40,7 @@
                             <th scope="col">Kuota Kamar</th>
                             <th scope="col">Kamar Terisi</th>
                             <th scope="col">Sisa Kamar</th>
+                            <th scope="col">Diupdate</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -59,7 +61,12 @@
                                 <td>{{ $item->total_kamar }}</td>
                                 <td>{{ $item->total_terisi }}</td>
                                 <td>{{ $item->sisa_kamar }}</td>
-                                
+                                <td>{{ $item->user->name }}
+                                    <div class="text-xs text-info">
+                                        {{ tgl_id($item->updated_at) }}
+                                    </div>
+                                </td>
+
 
                                 <td>
                                     <a href="{{ route('kamar.edit', $item->id) }}"
@@ -95,35 +102,35 @@
                                                     <input type="hidden" name="kelas_id"
                                                         value="{{ old('kelas_id') ? old('kelas_id') : $item->kelas_id }}">
 
-                                                   <!--  <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="pria">Slot Pria</label>
-                                                            <input type="text" name="pria"
-                                                                class="form-control @error('pria') is-invalid @enderror"
-                                                                value="{{ old('pria') ? old('pria') : $item->pria }}"
-                                                                required>
-                                                            @error('pria')
-                                                                <div class="invalid-feedback">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
-                                                        </div>
-                                                    </div> -->
-                                                  <!--   <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="wanita">Slot Wanita</label>
-                                                            <input type="text" name="wanita"
-                                                                class="form-control @error('wanita') is-invalid @enderror"
-                                                                value="{{ old('wanita') ? old('wanita') : $item->wanita }}"
-                                                                required>
-                                                            @error('wanita')
-                                                                <div class="invalid-feedback">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
-                                                        </div>
-                                                    </div> -->
-                                                    <div class="col-md-4">
+                                                    <!--  <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="pria">Slot Pria</label>
+                                                                <input type="text" name="pria"
+                                                                    class="form-control @error('pria') is-invalid @enderror"
+                                                                    value="{{ old('pria') ? old('pria') : $item->pria }}"
+                                                                    required>
+                                                                @error('pria')
+        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+    @enderror
+                                                            </div>
+                                                        </div> -->
+                                                    <!--   <div class="col-md-4">
+                                                            <div class="form-group">
+                                                                <label for="wanita">Slot Wanita</label>
+                                                                <input type="text" name="wanita"
+                                                                    class="form-control @error('wanita') is-invalid @enderror"
+                                                                    value="{{ old('wanita') ? old('wanita') : $item->wanita }}"
+                                                                    required>
+                                                                @error('wanita')
+        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+    @enderror
+                                                            </div>
+                                                        </div> -->
+                                                    <div class="col">
                                                         <div class="form-group">
                                                             <label for="total_terisi">Total Terisi</label>
                                                             <input type="text" name="total_terisi"
@@ -137,7 +144,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    {{-- <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="sisa_kamar">Sisa Kamar</label>
                                                             <input type="text" name="sisa_kamar"
@@ -150,8 +157,8 @@
                                                                 </div>
                                                             @enderror
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-4">
+                                                    </div> --}}
+                                                    <div class="col">
                                                         <div class="form-group">
                                                             <label for="total_kamar">Kuota</label>
                                                             <input type="text" name="total_kamar"
@@ -181,13 +188,11 @@
     </div>
 @endsection
 @section('js')
-<script>
-      $(function() {
-        $('#dataTable').DataTable(
-        {
+    <script>
+        $(function() {
+            $('#dataTable').DataTable({
 
+            });
         });
-      });
     </script>
-    
 @endsection
