@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kamar;
+use App\Models\Catkamar;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +17,15 @@ class KamarController extends Controller
      */
     public function index()
     {
-        $kamar = Kamar::all();
+        if(auth()->user()->admin == 0){
+            $kelola = auth()->user()->kamar_id;
+            $kamar = Kamar::where('kamar_id',$kelola)->get();
+        }else{
+            $kamar = Kamar::all();
+
+        }
+        // dd($kamar);
+        // dd($kamar);
         return view('backend.kamar.index', ['kamar' => $kamar]);
     }
 
@@ -28,7 +37,8 @@ class KamarController extends Controller
     public function create()
     {
         $kelas = Kelas::all();
-        return view('backend.kamar.create', compact('kelas'));
+        $kamar = Catkamar::all();
+        return view('backend.kamar.create', compact('kelas','kamar'));
     }
 
     /**
@@ -40,7 +50,8 @@ class KamarController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "nama_ruang" => "required",
+            // "nama_ruang" => "required",
+            "kamar_id" => "required",
             "kelas_id" => "required",
             // "pria" => "required",
             // "wanita" => "required",
@@ -56,7 +67,8 @@ class KamarController extends Controller
         }
         $kamar = new Kamar();
 
-        $kamar->nama_ruang = $request->nama_ruang;
+        // $kamar->nama_ruang = $request->nama_ruang;
+        $kamar->kamar_id = $request->kamar_id;
         $kamar->kelas_id = $request->kelas_id;
         $kamar->user_id = auth()->user()->id;
         // $kamar->pria = $request->pria;
@@ -117,7 +129,8 @@ class KamarController extends Controller
                 ->withInput();
         }
         $kamar = Kamar::findOrFail($id);
-        $kamar->nama_ruang = $request->nama_ruang;
+        // $kamar->nama_ruang = $request->nama_ruang;
+        // $kamar->kamar_id = $request->kamar_id;
         $kamar->kelas_id = $request->kelas_id;
         $kamar->user_id = auth()->user()->id;
         // $kamar->pria = $request->pria;

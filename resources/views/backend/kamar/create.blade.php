@@ -1,5 +1,7 @@
 @extends('layouts.app', ['title' => __('Tambah Kamar')])
-
+@section('UpdateKamar')
+    active
+@endsection
 @section('content')
     <h1 class="h3 mb-0 text-gray-800">Tambah Data Kamar</h1>
     <p class="mb-4">Lengkapi formulir berikut untuk menambahkan data kamar.</p>
@@ -23,7 +25,7 @@
                 <form action="{{ route('kamar.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-12">
+                        {{-- <div class="col-md-12">
                             <div class="form-group">
                                 <label for="nama_ruang">Nama Kamar</label>
                                 <input type="text" name="nama_ruang"
@@ -35,9 +37,25 @@
                                     </div>
                                 @enderror
                             </div>
+                        </div> --}}
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="kamar_id">Kamar</label>
+                                <select name="kamar_id" id="kamar_id"
+                                    class="form-control @error('kamar_id') is-invalid @enderror" required>
+                                    <option value="" disabled selected>Choose one</option>
+                                    @foreach ($kamar as $kamar_id)
+                                        <option value="{{ $kamar_id->id }}">{{ $kamar_id->label }}</option>
+                                    @endforeach
+                                </select>
+                                @error('kamar_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="col-md-4">
-
                             <div class="form-group">
                                 <label for="kelas_id">Kelas</label>
                                 <select name="kelas_id" id="kelas_id"

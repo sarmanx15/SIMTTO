@@ -21,11 +21,11 @@ Route::middleware(['auth'])->group(function () {    Route::get('/home', [App\Htt
 
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
     Route::resource('tags', App\Http\Controllers\TagController::class);
+    Route::resource('catkamar', App\Http\Controllers\CatKamarController::class);
 
     Route::resource('kelas', App\Http\Controllers\KelasController::class);
 
     Route::resource('kamar', App\Http\Controllers\KamarController::class);
-    Route::resource('catkamar', App\Http\Controllers\CatKamarController::class);
     Route::resource('user', App\Http\Controllers\UserController::class);
     Route::get('profil', [App\Http\Controllers\ProfilController::class , 'edit'])->name('profile.edit');
     Route::put('profil', [App\Http\Controllers\ProfilController::class , 'update'])->name('profile.update');

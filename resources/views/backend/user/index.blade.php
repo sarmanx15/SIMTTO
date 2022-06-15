@@ -1,5 +1,7 @@
 @extends('layouts.app', ['title' => __('Users')])
-
+@section('DataUserNav')active @endsection
+@section('ManageUser')active @endsection
+@section('DataUser')show @endsection
 @section('content')
     <h1 class="h3 mb-0 text-gray-800">Manajemen User</h1>
     <p class="mb-4">Berikut ini adalah data yang tersimpan di sistem</p>
@@ -58,7 +60,7 @@
                                 <td><strong>{{ $item->name }}</strong></td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->username }}</td>
-                                <td class="text-success">{{ $item->admin == 1 ? 'Administrator' : 'Petugas' }} </td>
+                                <td class="text-success">{{ $item->admin == 1 ? 'Administrator' : 'Petugas kamar '.$item->catkamar['label'] }} </td>
                                 <td>
                                     <button class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#editModal-{{ $item->id }}">
@@ -156,6 +158,21 @@
                 <div class="modal-body">
                     <form action="{{ route('user.store') }}" method="POST">
                         @csrf
+                        <div class="form-group">
+                                <label for="kamar_id">Kamar</label>
+                                <select name="kamar_id" id="kamar_id"
+                                    class="form-control @error('kamar_id') is-invalid @enderror" required>
+                                    <option value="" disabled selected>Choose one</option>
+                                    @foreach ($kamar as $kamar_id)
+                                        <option value="{{ $kamar_id->id }}">{{ $kamar_id->label }}</option>
+                                    @endforeach
+                                </select>
+                                @error('kamar_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                         <div class="form-group">
                             <label for="label">Name</label>
                             <input type="text" name="name" class="form-control" id="label" required>

@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Catkamar;
 use Illuminate\Http\Request;
 use Alert;
-use Illuminate\Support\Facades\Hash;
 
 
-
-class UserController extends Controller
+class CatKamarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $data = Catkamar::all();
+        // dd($data->kamar);
+        return view('backend.catkamar.index',compact('data'));
 
-        $user = User::all();
-        $kamar = Catkamar::all();
-        return view('backend.user.index', compact('user','kamar'));
     }
 
     /**
@@ -43,26 +40,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        $this->validate($request, [
-            'name'      => 'required',
-
-            'email'     => 'required|email|unique:users,email',
-            'username'  => 'required|unique:users,username',
-
-            'password'  => ['required', 'string', 'min:5', 'confirmed'],
-            'admin'     => 'required',
-
-            // 'role' => 'required'
-        ]);
-        
-        $input = $request->all();
-        // dd($input);
-
-        $input['password'] = Hash::make($input['password']);
-
-
-        User::create($input);
+        $data = new Catkamar();
+        $data->label = $request->label;
+        $data->save();
         Alert::success('Sukses', 'Data Berhasil Disimpan');
 
         return redirect()->back();
@@ -71,10 +51,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CatKamar  $catKamar
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(CatKamar $catKamar)
     {
         //
     }
@@ -82,10 +62,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CatKamar  $catKamar
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(CatKamar $catKamar)
     {
         //
     }
@@ -94,19 +74,16 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CatKamar  $catKamar
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->id = $request->id;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->username = $request->username;
-        $user->password = Hash::make($request->password);
-        $user->admin = $request->admin;
-        $user->save();
+        $data = Catkamar::findOrFail($id);
+        $data->label = $request->label;
+
+        $data->save();
+        Alert::success('Sukses', 'Data Berhasil Diupdate');
 
         return redirect()->back();
     }
@@ -114,15 +91,15 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\CatKamar  $catKamar
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-       $user = User::findOrFail($id);
-        $user->delete();
+        $data = Catkamar::findOrFail($id);
+        $data->delete();
         Alert::success('Congrats', 'Data Berhasil Dihapus');
 
-        return redirect()->route('user.index');
+        return redirect()->route('catkamar.index');
     }
 }

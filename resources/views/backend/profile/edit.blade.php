@@ -1,5 +1,7 @@
 @extends('layouts.app', ['title' => __('User Profile')])
-
+@section('DataUserNav')active @endsection
+@section('Profile')active @endsection
+@section('DataUser')show @endsection
 
 @section('content')
     @if (session('error'))

@@ -15,7 +15,12 @@ class CreateKamarsTable extends Migration
     {
         Schema::create('kamars', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_ruang');
+            $table->foreignId('kamar_id')
+                ->references('id')
+                ->on('kamar')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreignId('kelas_id')
                 ->constrained()
                 ->onUpdate('cascade')

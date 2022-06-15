@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\Kamar;
+use App\Models\Kelas;
+use App\Models\Catkamar;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,9 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
         User::create([
             'name'      => 'ADMIN PDE',
             'email'     => 'admin@rsudaws.co.id',
+            // 'kamar_id'  => '0',
             'username'  => 'adminpde',
             'password'  => bcrypt('12345678'),
             'admin'     => '1'
@@ -25,9 +28,11 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name'      => 'PETUGAS',
             'email'     => 'petugas@rsudaws.co.id',
+            // 'kamar_id' => '0',
             'username'  => 'adminkamar',
             'password'  => bcrypt('12345678'),
             'admin'     => '0'
         ]);
+        
     }
 }

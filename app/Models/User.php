@@ -24,6 +24,7 @@ class User extends Authenticatable
         'username',
         'password',
         'admin',
+        'kamar_id',
     ];
 
     /**
@@ -52,5 +53,9 @@ class User extends Authenticatable
     public function kamar()
     {
         return $this->hasMany(Kamar::class);
+    }
+    public function catkamar()
+    {
+        return $this->belongsTo(Catkamar::class , 'kamar_id', 'id');
     }
 }

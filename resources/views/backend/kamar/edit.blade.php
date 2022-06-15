@@ -1,4 +1,7 @@
 @extends('layouts.app',['title' => __('Edit Kamar')])
+@section('UpdateKamar')
+    active
+@endsection
 @section('content')
     <h1 class="h3 mb-0 text-gray-800">Manajemen Kamar</h1>
     <p class="mb-4">Lengkapi formulir berikut untuk mengupdate data kamar.</p>
@@ -24,7 +27,7 @@
                     <input type="hidden" name="_method" value="PUT">
                     @csrf
                     <div class="row">
-                        <div class="col-md-12">
+                        {{-- <div class="col-md-12">
                             <div class="form-group">
                                 <label for="nama_ruang">Nama Kamar</label>
                                 <input type="text" name="nama_ruang"
@@ -36,7 +39,26 @@
                                     </div>
                                 @enderror
                             </div>
+                        </div> --}}
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="kamar_id">Kamar</label>
+                                <select name="kamar_id" id="kamar_id"
+                                    class="form-control @error('kamar_id') is-invalid @enderror" required>
+                                    <option value="" disabled selected>Choose one</option>
+                                    @foreach ($kamar as $kmr)
+                                        <option {{ $kmr->id == $kamar->kamar_id ? 'selected' : '' }}
+                                            value="{{ $kmr->id }}">{{ $kmr->label }}</option>
+                                    @endforeach
+                                </select>
+                                @error('kamar_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                         </div>
+
                        <!--  <div class="col-md-4">
                             <div class="form-group">
                                 <label for="pria">Slot Pria</label>
