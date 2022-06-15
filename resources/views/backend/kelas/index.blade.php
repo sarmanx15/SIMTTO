@@ -32,6 +32,7 @@
                         <tr>
                             <th scope="col">No.</th>
                             <th scope="col">Nama Kelas</th>
+                            <th scope="col">Jumlah Kamar</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -40,17 +41,20 @@
                             <tr>
                                 <th scope="row">{{ ++$key }}</th>
                                 <td>{{ $item->label }}</td>
+                                <td>{{ count($item->kamar) }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#editModal-{{ $item->id }}">
                                         Edit
                                     </button>
+                                    @if(count($item->kamar) == 0)
                                     <form method="POST" action="{{ route('kelas.destroy', [$item->id]) }}"
                                         class="d-inline" onsubmit="return confirm('Delete this data permanently?')">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                             <!-- Edit Modal -->

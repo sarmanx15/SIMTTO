@@ -33,13 +33,13 @@
                     <table class="table table-bordered text-center table-stripped table-condensed" width="100%"
                         cellspacing="0">
                         <thead class="bg-dashboard-success text-white h4">
-                            <th>NAMA KAMAR</th>
-                            <th>KELAS</th>
+                            <th width="300px">NAMA KAMAR</th>
+                            <th width="300px">KELAS</th>
                             <!-- <th>SLOT PRIA</th> -->
                             <!-- <th>SLOT WANITA</th> -->
-                            <th>KUOTA</th>
-                            <th>BED TERPAKAI</th>
-                            <th>BED KOSONG</th>
+                            <th width="300px">KUOTA</th>
+                            <th width="300px">TEMPAT TIDUR TERPAKAI</th>
+                            <th width="300px">TEMPAT TIDUR KOSONG</th>
                             
                             <!-- <th>TERAKHIR UPDATE</th> -->
                         </thead>
