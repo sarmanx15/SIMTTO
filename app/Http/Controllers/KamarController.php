@@ -132,7 +132,9 @@ class KamarController extends Controller
         }
         $kamar = Kamar::findOrFail($id);
         // $kamar->nama_ruang = $request->nama_ruang;
+        if($request->kamar_id !== null){
         $kamar->kamar_id = $request->kamar_id;
+        }
         $kamar->kelas_id = $request->kelas_id;
         $kamar->user_id = auth()->user()->id;
         // $kamar->pria = $request->pria;

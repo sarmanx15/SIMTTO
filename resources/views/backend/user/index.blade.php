@@ -1,7 +1,13 @@
 @extends('layouts.app', ['title' => __('Users')])
-@section('DataUserNav')active @endsection
-@section('ManageUser')active @endsection
-@section('DataUser')show @endsection
+@section('DataUserNav')
+    active
+@endsection
+@section('ManageUser')
+    active
+@endsection
+@section('DataUser')
+    show
+@endsection
 @section('content')
     <h1 class="h3 mb-0 text-gray-800">Manajemen User</h1>
     <p class="mb-4">Berikut ini adalah data yang tersimpan di sistem</p>
@@ -94,6 +100,24 @@
                                                 <input type="hidden" name="_method" value="PUT">
                                                 @csrf
                                                 <div class="form-group">
+                                                    <label for="kamar_id">Kamar</label>
+                                                    <select name="kamar_id" id="kamar_id"
+                                                        class="form-control @error('kamar_id') is-invalid @enderror"
+                                                        required>
+                                                        <option value="" disabled selected>Choose one</option>
+                                                        @foreach ($kamar as $kmr)
+                                                            <option {{ $kmr->id == $item->kamar_id ? 'selected' : '' }}
+                                                                value="{{ $kmr->id }}">{{ $kmr->label }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('kamar_id')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="label">Name</label>
                                                     <input type="text" name="name" class="form-control" id="label"
                                                         value="{{ $item->name }}" required>
@@ -108,17 +132,18 @@
                                                     <label for="label">Username</label>
                                                     <input type="text" name="username" class="form-control" id="label"
                                                         value="{{ $item->username }}" required>
-                                               </div>
+                                                </div>
+                                                  
                                                 <div class="form-group">
                                                     <label for="label">Password</label>
-                                                    <input type="password" name="password" class="form-control"
+                                                    <input type="password" name="password" placeholder="Kosongkan Jika Tidak Ada Perubahan" class="form-control"
                                                         id="input-password">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="label">Konfirmasi Password</label>
                                                     <input class="form-control" name="password_confirmation"
                                                         id="input-password-confirmation" type="password"
-                                                        placeholder="Confirm Password" />
+                                                        placeholder="Kosongkan Jika Tidak Ada Perubahan" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="label">Roles</label>
@@ -127,7 +152,7 @@
                                                         <option value="" disabled selected>Choose one</option>
                                                         <option {{ $item->admin == 1 ? 'selected' : '' }} value="1">
                                                             Administrator</option>
-                                                        <option {{ $item->admin == 0 ? 'selected' : '' }} value="1">
+                                                        <option {{ $item->admin == 0 ? 'selected' : '' }} value="0">
                                                             Petugas</option>
                                                     </select>
                                                 </div>
@@ -159,20 +184,20 @@
                     <form action="{{ route('user.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                                <label for="kamar_id">Kamar</label>
-                                <select name="kamar_id" id="kamar_id"
-                                    class="form-control @error('kamar_id') is-invalid @enderror" required>
-                                    <option value="" disabled selected>Choose one</option>
-                                    @foreach ($kamar as $kamar_id)
-                                        <option value="{{ $kamar_id->id }}">{{ $kamar_id->label }}</option>
-                                    @endforeach
-                                </select>
-                                @error('kamar_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                            <label for="kamar_id">Kamar</label>
+                            <select name="kamar_id" id="kamar_id"
+                                class="form-control @error('kamar_id') is-invalid @enderror" required>
+                                <option value="" disabled selected>Choose one</option>
+                                @foreach ($kamar as $kamar_id)
+                                    <option value="{{ $kamar_id->id }}">{{ $kamar_id->label }}</option>
+                                @endforeach
+                            </select>
+                            @error('kamar_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <label for="label">Name</label>
                             <input type="text" name="name" class="form-control" id="label" required>
