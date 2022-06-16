@@ -59,10 +59,12 @@ class UserController extends Controller
         $input = $request->all();
         // dd($input);
 
+        $input['name'] = $request['name'];
         $input['password'] = Hash::make($input['password']);
 
 
         User::create($input);
+        activity()->log('Menambah Data User [ ' . $input['name'] . ' ]');
         Alert::success('Sukses', 'Data Berhasil Disimpan');
 
         return redirect()->back();
@@ -109,6 +111,8 @@ class UserController extends Controller
 
         $user->admin = $request->admin;
         $user->save();
+        activity()->log('Mengupdate Data User [ ' . $user->name . ' ]');
+
         Alert::success('Congrats', 'Data Berhasil Diupdate');
 
         return redirect()->back();
@@ -124,6 +128,8 @@ class UserController extends Controller
     {
        $user = User::findOrFail($id);
         $user->delete();
+        activity()->log('Menghapus Data User [ ' . $user->name . ' ]');
+
         Alert::success('Congrats', 'Data Berhasil Dihapus');
 
         return redirect()->route('user.index');

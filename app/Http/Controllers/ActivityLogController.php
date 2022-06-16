@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\ActivityLog;
 use Illuminate\Http\Request;
-use Alert;
-use Illuminate\Support\Facades\Hash;
 
-class ProfilController extends Controller
+class ActivityLogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,9 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        //
+        $data = ActivityLog::with('user')->orderBy('id','DESC')->get();
+        return view('backend.logs.index', compact('data'));
+
     }
 
     /**
@@ -43,10 +43,10 @@ class ProfilController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\ActivityLog  $activityLog
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(ActivityLog $activityLog)
     {
         //
     }
@@ -54,39 +54,33 @@ class ProfilController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\ActivityLog  $activityLog
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(ActivityLog $activityLog)
     {
-        return view('backend.profile.edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\ActivityLog  $activityLog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, ActivityLog $activityLog)
     {
-        $data = $request->all();
-        $data['password'] = Hash::make($data['password']);
-        auth()->user()->update($data);
-        activity()->log('Mengupdate Data Profil User');
-        Alert::success('Sukses', 'Profil Berhasil Disimpan');
-
-        return redirect()->back();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\ActivityLog  $activityLog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(ActivityLog $activityLog)
     {
         //
     }

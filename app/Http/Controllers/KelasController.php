@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 use Alert;
 
 class KelasController extends Controller
@@ -38,9 +40,19 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            "label" => "required|unique:kelas,label",
+        ]);
+        if ($validator->fails()) {
+        Alert::error('Gagal', 'Nama Kelas Sudah Dipakai, Gunakan Nama Lain!');
+
+            return redirect()->back();
+        }
+
         $kelas = new Kelas();
         $kelas->label = $request->label;
         $kelas->save();
+        activity()->log('Menambah Data Kelas [ '.$kelas->label.' ]');
         Alert::success('Sukses', 'Data Berhasil Disimpan');
 
         return redirect()->back();
@@ -77,10 +89,19 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            "label" => "required|unique:kelas,label",
+        ]);
+        if ($validator->fails()) {
+            Alert::error('Gagal', 'Nama Kelas Sudah Dipakai, Gunakan Nama Lain!');
+            return redirect()->back();
+        }
+
         $kelas = Kelas::findOrFail($id);
         $kelas->label = $request->label;
         
         $kelas->save();
+        activity()->log('Mengupdate Data Kelas [ ' . $kelas->label . ' ]');
         Alert::success('Sukses', 'Data Berhasil Diupdate');
 
         return redirect()->back();
@@ -96,6 +117,7 @@ class KelasController extends Controller
     {
         $kelas = Kelas::findOrFail($id);
         $kelas->delete();
+        activity()->log('Menghapus Data Kelas [ ' . $kelas->label . ' ]');
         Alert::success('Congrats', 'Data Berhasil Dihapus');
 
         return redirect()->route('kelas.index');

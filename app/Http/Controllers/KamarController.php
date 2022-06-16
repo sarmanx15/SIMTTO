@@ -77,6 +77,8 @@ class KamarController extends Controller
         $kamar->total_terisi = $request->total_terisi;
         $kamar->sisa_kamar = $request->total_kamar - $request->total_terisi;
         $kamar->save();
+        activity()->log('Menambah Data Kamar [ ' . $kamar->catkamar->label . ' ]');
+
         Alert::success('Congrats', 'Data Berhasil Disimpan');
 
         return redirect()->route('kamar.index');
@@ -144,7 +146,7 @@ class KamarController extends Controller
         $kamar->sisa_kamar = $request->total_kamar - $request->total_terisi;
 
         $kamar->save();
-
+        activity()->log('Mengedit Data Kamar [ ' . $kamar->catkamar->label . ' ]');
         Alert::success('Congrats', 'Data Berhasil Diupdate');
 
         return redirect()->route('kamar.index');
@@ -161,6 +163,8 @@ class KamarController extends Controller
         $kamar = Kamar::findOrFail($id);
 
         $kamar->delete();
+        activity()->log('Menghapus Data Kamar [ ' . $kamar->catkamar->label . ' ]');
+
         Alert::success('Sukses', 'Data Berhasil Dihapus');
 
 

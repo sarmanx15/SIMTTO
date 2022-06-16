@@ -24,6 +24,7 @@ Route::middleware(['auth'])->group(function () {    Route::get('/home', [App\Htt
     Route::resource('catkamar', App\Http\Controllers\CatKamarController::class);
 
     Route::resource('kelas', App\Http\Controllers\KelasController::class);
+    Route::resource('logs', App\Http\Controllers\ActivityLogController::class);
 
     Route::resource('kamar', App\Http\Controllers\KamarController::class);
     Route::resource('user', App\Http\Controllers\UserController::class);

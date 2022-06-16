@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-primary sidebar sidebar-dark accordion text-white" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
@@ -87,6 +87,17 @@
             </div>
         </div>
     </li>
+    @if (auth()->user()->admin == 1)
+
+    <div class="sidebar-heading">
+        Monitoring
+    </div>
+    <li class="nav-item @yield('Logs')">
+        <a class="nav-link" href="{{ route('logs.index') }}">
+            <i class="fas fa-history"></i>
+            <span>Logs Activity User</span></a>
+    </li>
+@endif
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

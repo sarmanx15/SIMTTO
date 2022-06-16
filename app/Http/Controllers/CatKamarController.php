@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Catkamar;
 use Illuminate\Http\Request;
+use App\Models\ActivityLog;
 use Alert;
 
 
@@ -17,7 +18,7 @@ class CatKamarController extends Controller
     public function index()
     {
         $data = Catkamar::all();
-        // dd($data->kamar);
+        // dd($act);
         return view('backend.catkamar.index',compact('data'));
 
     }
@@ -43,6 +44,7 @@ class CatKamarController extends Controller
         $data = new Catkamar();
         $data->label = $request->label;
         $data->save();
+        activity()->log('Menambah Data Kategori Kamar [ ' . $data->label . ' ]');
         Alert::success('Sukses', 'Data Berhasil Disimpan');
 
         return redirect()->back();
@@ -83,6 +85,7 @@ class CatKamarController extends Controller
         $data->label = $request->label;
 
         $data->save();
+        activity()->log('Mengedit Data Kategori Kamar [ ' . $data->label . ' ]');
         Alert::success('Sukses', 'Data Berhasil Diupdate');
 
         return redirect()->back();
@@ -98,6 +101,8 @@ class CatKamarController extends Controller
     {
         $data = Catkamar::findOrFail($id);
         $data->delete();
+        activity()->log('Menghapus Data Kategori Kamar [ ' . $data->label . ' ]');
+
         Alert::success('Congrats', 'Data Berhasil Dihapus');
 
         return redirect()->route('catkamar.index');
