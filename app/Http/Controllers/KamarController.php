@@ -102,8 +102,10 @@ class KamarController extends Controller
     public function edit($id)
     {
         $kamar = Kamar::findOrFail($id);
+        $mkamar = Catkamar::all();
         $kelas = Kelas::all();
-        return view('backend.kamar.edit', compact('kamar', 'kelas'));
+        
+        return view('backend.kamar.edit', compact('kamar','mkamar', 'kelas'));
     }
 
     /**
@@ -130,7 +132,7 @@ class KamarController extends Controller
         }
         $kamar = Kamar::findOrFail($id);
         // $kamar->nama_ruang = $request->nama_ruang;
-        // $kamar->kamar_id = $request->kamar_id;
+        $kamar->kamar_id = $request->kamar_id;
         $kamar->kelas_id = $request->kelas_id;
         $kamar->user_id = auth()->user()->id;
         // $kamar->pria = $request->pria;

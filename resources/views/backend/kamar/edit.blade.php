@@ -46,7 +46,7 @@
                                 <select name="kamar_id" id="kamar_id"
                                     class="form-control @error('kamar_id') is-invalid @enderror" required>
                                     <option value="" disabled selected>Choose one</option>
-                                    @foreach ($kamar as $kmr)
+                                    @foreach ($mkamar as $kmr)
                                         <option {{ $kmr->id == $kamar->kamar_id ? 'selected' : '' }}
                                             value="{{ $kmr->id }}">{{ $kmr->label }}</option>
                                     @endforeach
