@@ -33,8 +33,8 @@
                     <thead>
                         <tr>
                             <th scope="col">No.</th>
-                            <th scope="col">Nama Kategori</th>
-                            <th scope="col">Jumlah Kamar</th>
+                            <th scope="col">Nama Kamar</th>
+                            <th scope="col">Jumlah Kelas</th>
                             <th scope="col">Petugas</th>
                             <th scope="col">Action</th>
                         </tr>

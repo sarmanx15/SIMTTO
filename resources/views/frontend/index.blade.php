@@ -34,7 +34,7 @@
                     <div class="card-header bg-info py-3">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <h3 class="m-0 font-weight-bold text-white">{{ $kmr->nama_ruang }}</h3>
+                                <h3 class="m-0 font-weight-bold text-white">{{ $kmr->$catkamar->label }}</h3>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-bed fa-2x text-gray-300"></i>
@@ -79,7 +79,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2 text-center">
                                                 <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
-                                                    Kamar Kosong</div>
+                                                    Kamar Kosongv</div>
                                                 <div class="h2 mb-0 font-weight-bold text-success">
                                                     {{ $kmr->sisa_kamar }}
                                                 </div>

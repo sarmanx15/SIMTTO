@@ -50,7 +50,7 @@
                                         <div class="form-group">
                                             <label for="username">Username</label>
                                             <input id="username" type="text"
-                                                class="form-control @error('username') is-invalid @enderror" name="username"
+                                                class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Username" 
                                                 value="{{ old('username') }}" required autocomplete="username" autofocus >
 
                                             @error('username')
@@ -60,10 +60,10 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="password">Username</label>
+                                            <label for="password">Password</label>
                                             <input id="password" type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
-                                                name="password" required autocomplete="current-password">
+                                                name="password" required autocomplete="current-password" placeholder="Password">
 
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">

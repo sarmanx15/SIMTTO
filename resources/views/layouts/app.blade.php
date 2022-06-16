@@ -78,7 +78,7 @@
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; RSUD AW SJAHRANIE {{ now()->year }} Admin Panel - <a
-                                href="https://www.instagram.com/rzkyafriani/" target="_blank">KiMan Studio</a>
+                                href="https://www.instagram.com/rzkyafriani/" target="_blank">Instalasi PDE</a>
                         </span>
                     </div>
                 </div>

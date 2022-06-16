@@ -45,7 +45,7 @@
                             <table class="table table-bordered text-center table-stripped" width="100%" cellspacing="0">
                                 <thead>
                                     <th>Kamar Terpakai</th>
-                                    <th>Kamar Kosong</th>
+                                    <th>Kamar Kosongv</th>
                                     <th>Total Kamar</th>
                                 </thead>
                                 <tbody>

@@ -46,7 +46,7 @@
                         <tbody>
                             @foreach ($kamar as $key => $kmr)
                                 <tr @if ($key % 2 == 1) class="bg-dashboard-success text-white" @else class="text-gray-900" @endif>
-                                    <td class="h4 mb-0 font-weight-normal">{{ strtoupper($kmr->nama_ruang) }}</td>
+                                    <td class="h4 mb-0 font-weight-normal">{{ strtoupper($kmr->catkamar->label) }}</td>
                                     <td class="h4 mb-0 font-weight">{{ $kmr->kelas->label }}</td>
                                     <td class="h4 mb-0 font-weight">{{ $kmr->total_kamar }}</td>
                                     <!-- <td class="h4 mb-0 font-weight">{{ $kmr->pria }}</td> -->

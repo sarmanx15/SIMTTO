@@ -46,7 +46,9 @@
                             <th scope="col">Kamar Terisi</th>
                             <th scope="col">Sisa Kamar</th>
                             <th scope="col">Diupdate</th>
+                            @if (auth()->user()->admin == 1)
                             <th scope="col">Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -72,19 +74,20 @@
                                     </div>
                                 </td>
 
-
+                               @if (auth()->user()->admin == 1)
                                 <td>
                                     <a href="{{ route('kamar.edit', $item->id) }}"
                                         class="btn btn-success btn-sm">Edit</a>
-                                    @if (auth()->user()->admin == 1)
+                                    
                                         <form method="POST" action="{{ route('kamar.destroy', [$item->id]) }}"
                                             class="d-inline" onsubmit="return confirm('Yakin Hapus Data ?')">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                                         </form>
-                                    @endif
+                                   
                                 </td>
+                                 @endif
                             </tr>
                             <div class="modal fade" id="editModal-{{ $item->id }}" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">

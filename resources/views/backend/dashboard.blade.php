@@ -1,7 +1,7 @@
 @extends('layouts.app',['title' => __('Admin Dashboard')])
 @section('content')
-<h1 class="h3 mb-0 text-gray-800">DASHBOARD SIMPATI AWS</h1>
-    <p class="h6 mb-4">Selamat Datang <strong>{{ Auth::user()->name }}</strong>, Semoga Harimu menyenangkan...</p>
+<h1 class="h3 mb-0 text-gray-800">DASHBOARD SIMTTO RSUD AWS</h1>
+    <p class="h6 mb-4">Selamat Datang <strong>{{ Auth::user()->name }}</strong></p>
 
 
     @if (session('success'))
@@ -55,7 +55,8 @@
                     <div class="card-header bg-info py-3">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <h3 class="m-0 font-weight-bold text-white">{{ $kmr->nama_ruang }}</h3>
+                                <h3 class="m-0 font-weight text-white">{{ $kmr->catkamar->label }}</h3>
+                                <h4 class="m-0 font-weight text-white">{{ $kmr->kelas->label }} </h3>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-bed fa-2x text-gray-300"></i>
