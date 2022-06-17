@@ -183,6 +183,9 @@
                 <div class="modal-body">
                     <form action="{{ route('user.store') }}" method="POST">
                         @csrf
+
+
+                        @if (auth()->user()->admin == 0)
                         <div class="form-group">
                             <label for="kamar_id">Kamar</label>
                             <select name="kamar_id" id="kamar_id"
@@ -198,6 +201,7 @@
                                 </div>
                             @enderror
                         </div>
+                        @endif
                         <div class="form-group">
                             <label for="label">Name</label>
                             <input type="text" name="name" class="form-control" id="label" required>

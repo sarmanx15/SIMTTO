@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Catkamar;
 use Illuminate\Http\Request;
 use App\Models\ActivityLog;
+use Illuminate\Support\Facades\Validator;
 use Alert;
 
 
@@ -41,6 +42,15 @@ class CatKamarController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            "label" => "required|unique:kamar,label",
+        ]);
+        if ($validator->fails()) {
+        Alert::error('Gagal', 'Nama Kamar Sudah Dipakai, Gunakan Nama Lain!');
+
+            return redirect()->back();
+        }
+    
         $data = new Catkamar();
         $data->label = $request->label;
         $data->save();
