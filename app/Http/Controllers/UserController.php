@@ -103,6 +103,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->name = $request->name;
+        $user->kamar_id = $request->kamar_id;
         $user->email = $request->email;
         $user->username = $request->username;
         if ($request->password!==null){

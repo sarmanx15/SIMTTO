@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name'      => 'ADMIN PDE',
             'email'     => 'admin@rsudaws.co.id',
-            // 'kamar_id'  => '0',
+            // 'kamar_id'  => '',
             'username'  => 'adminpde',
             'password'  => bcrypt('12345678'),
             'admin'     => '1'
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name'      => 'PETUGAS',
             'email'     => 'petugas@rsudaws.co.id',
-            // 'kamar_id' => '0',
+            // 'kamar_id' => '',
             'username'  => 'adminkamar',
             'password'  => bcrypt('12345678'),
             'admin'     => '0'

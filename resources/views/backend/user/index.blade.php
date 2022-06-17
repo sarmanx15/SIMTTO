@@ -56,6 +56,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Username</th>
                             <th scope="col">Role</th>
+                            <th scope="col">Ruang</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -68,14 +69,20 @@
                                 <td>{{ $item->username }}</td>
                                 <td class="text-success">{!! $item->admin == 1 ? 'Administrator' : 'Petugas  ' !!} </td>
                                 <td>
+                                    @if (isset($item->catkamar['label']))
+                                        {!! $item->catkamar['label'] !!}
+                                    @endif
+                                </td>
+
+
+                                <td>
                                     <button class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#editModal-{{ $item->id }}">
                                         Edit
                                     </button>
                                     @if ($item->id != auth()->id())
                                         <form method="POST" action="{{ route('user.destroy', [$item->id]) }}"
-                                            class="d-inline"
-                                            onsubmit="return confirm('Delete this data permanently?')">
+                                            class="d-inline" onsubmit="return confirm('Delete this data permanently?')">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="submit" value="Delete" class="btn btn-danger btn-sm">
@@ -90,8 +97,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
@@ -130,14 +136,15 @@
 
                                                 <div class="form-group">
                                                     <label for="label">Username</label>
-                                                    <input type="text" name="username" class="form-control" id="label"
-                                                        value="{{ $item->username }}" required>
+                                                    <input type="text" name="username" class="form-control"
+                                                        id="label" value="{{ $item->username }}" required>
                                                 </div>
-                                                  
+
                                                 <div class="form-group">
                                                     <label for="label">Password</label>
-                                                    <input type="password" name="password" placeholder="Kosongkan Jika Tidak Ada Perubahan" class="form-control"
-                                                        id="input-password">
+                                                    <input type="password" name="password"
+                                                        placeholder="Kosongkan Jika Tidak Ada Perubahan"
+                                                        class="form-control" id="input-password">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="label">Konfirmasi Password</label>
@@ -150,9 +157,11 @@
                                                     <select name="admin" id="admin"
                                                         class="form-control @error('admin') is-invalid @enderror" required>
                                                         <option value="" disabled selected>Choose one</option>
-                                                        <option {{ $item->admin == 1 ? 'selected' : '' }} value="1">
+                                                        <option {{ $item->admin == 1 ? 'selected' : '' }}
+                                                            value="1">
                                                             Administrator</option>
-                                                        <option {{ $item->admin == 0 ? 'selected' : '' }} value="0">
+                                                        <option {{ $item->admin == 0 ? 'selected' : '' }}
+                                                            value="0">
                                                             Petugas</option>
                                                     </select>
                                                 </div>
@@ -185,7 +194,6 @@
                         @csrf
 
 
-                        @if (auth()->user()->admin == 0)
                         <div class="form-group">
                             <label for="kamar_id">Kamar</label>
                             <select name="kamar_id" id="kamar_id"
@@ -201,7 +209,6 @@
                                 </div>
                             @enderror
                         </div>
-                        @endif
                         <div class="form-group">
                             <label for="label">Name</label>
                             <input type="text" name="name" class="form-control" id="label" required>
@@ -251,8 +258,8 @@
                         </div>
                         <div class="form-group">
                             <label for="label">Roles</label>
-                            <select name="admin" id="admin" class="form-control @error('admin') is-invalid @enderror"
-                                required>
+                            <select name="admin" id="admin"
+                                class="form-control @error('admin') is-invalid @enderror" required>
                                 <option value="" disabled selected>Choose one</option>
                                 <option value="0">Petugas</option>
                                 <option value="1">Administrator</option>
