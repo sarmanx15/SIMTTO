@@ -72,7 +72,9 @@ class ProfilController extends Controller
     public function update(Request $request)
     {
         $data = $request->all();
+        if ($request->password!==null){
         $data['password'] = Hash::make($data['password']);
+        }
         auth()->user()->update($data);
         activity()->log('Mengupdate Data Profil User');
         Alert::success('Sukses', 'Profil Berhasil Disimpan');
