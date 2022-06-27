@@ -45,7 +45,7 @@
                             <th scope="col">Kuota Kamar</th>
                             <th scope="col">Kamar Terisi</th>
                             <th scope="col">Sisa Kamar</th>
-                            <th scope="col">Diupdate</th>
+                            <th scope="col">Keterangan</th>
                             @if (auth()->user()->admin == 1)
                             <th scope="col">Action</th>
                             @endif
@@ -66,13 +66,8 @@
                                 <td>{{ $item->total_kamar }}</td>
                                 <td>{{ $item->total_terisi }}</td>
                                 <td>{{ $item->sisa_kamar }}</td>
-                                <td>{{ $item->user->name }}
-                                    <div class="text-xs text-info">
-                                        {{-- {{ tgl_id($item->updated_at) }} - --}}
-                                        {{-- {{ $item->updated_at->diffForHumans() }} --}}
-                                        {{ $item->updated_at }}
-                                    </div>
-                                </td>
+                                <td>{{ $item->keterangan}}</td>
+                            
 
                                @if (auth()->user()->admin == 1)
                                 <td>
@@ -183,7 +178,48 @@
                                                         </div>
                                                     </div>
 
-                                                </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                           <label for="keterangan">Keterangan</label>
+                                                        </div>
+
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                        <textarea name="keterangan" id="keterangan" cols="45" rows="1"    
+                                                        class="form-control @error('keterangan') is-invalid @enderror"
+                                                                value="{{ old('keterangan') ? old('keterangan') : $item->keterangan }}"
+                                                                required>
+                                                            @error('keterangan')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </textarea>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- <div class="col">
+                                                    <div class="form-group">
+                                                        <textarea name="keterangan" id="keterangan" cols="30" rows="3"></textarea>
+                                                        </div>
+                                                    </div>
+ -->
+                                                   <!--  <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="keterangan">Keterangan</label>
+                                                             <input type="text" name="keterangan" rows="5"
+                                                                class="form-control @error('keterangan') is-invalid @enderror"
+                                                                value="{{ old('keterangan') ? old('keterangan') : $item->keterangan }}"
+                                                                required>
+                                                            @error('keterangan')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                </div> -->
+                                               
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>
                                         </div>

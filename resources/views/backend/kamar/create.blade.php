@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <h1 class="h3 mb-0 text-gray-800">Tambah Data Kamar</h1>
-    <p class="mb-4">Lengkapi formulir berikut untuk menambahkan data kamar.</p>
+    <p class="mb-4">Lengkapi formulir berikut untuk menambahkan data kamar</p>
 
 
 

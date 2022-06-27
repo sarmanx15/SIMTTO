@@ -51,12 +51,13 @@ class KamarController extends Controller
     {
         $validator = Validator::make($request->all(), [
             // "nama_ruang" => "required",
-            "kamar_id" => "required",
-            "kelas_id" => "required",
+            "kamar_id"      => "required",
+            "kelas_id"      => "required",
             // "pria" => "required",
             // "wanita" => "required",
-            "total_kamar" => "required",
-            "total_terisi" => "required",
+            "total_kamar"   => "required",
+            "total_terisi"  => "required",
+            "keterangan"    => "required",
             // "sisa_kamar" => "required",
         ]);
 
@@ -76,6 +77,7 @@ class KamarController extends Controller
         $kamar->total_kamar = $request->total_kamar;
         $kamar->total_terisi = $request->total_terisi;
         $kamar->sisa_kamar = $request->total_kamar - $request->total_terisi;
+        $kamar->keterangan = $request->keterangan;
         $kamar->save();
         activity()->log('Menambah Data Kamar [ ' . $kamar->catkamar->label . ' ]');
 
@@ -124,6 +126,7 @@ class KamarController extends Controller
             // "wanita" => "required",
             "total_kamar" => "required",
             "total_terisi" => "required",
+            "keterangan" => "required",
             // "sisa_kamar" => "required",
         ]);
 
@@ -144,6 +147,7 @@ class KamarController extends Controller
         $kamar->total_kamar = $request->total_kamar;
         $kamar->total_terisi = $request->total_terisi;
         $kamar->sisa_kamar = $request->total_kamar - $request->total_terisi;
+        $kamar->keterangan = $request->keterangan;
 
         $kamar->save();
         activity()->log('Mengedit Data Kamar [ ' . $kamar->catkamar->label . ' ]');

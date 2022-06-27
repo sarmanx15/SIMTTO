@@ -34,6 +34,7 @@ class CreateKamarsTable extends Migration
             $table->integer('total_kamar');
             $table->integer('total_terisi')->default('0');
             $table->integer('sisa_kamar')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }
