@@ -24,9 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (auth()->user()->admin == 0) {
+            $kelola = auth()->user()->kamar_id;
+            $kamars = Kamar::where('kamar_id', $kelola)->get();
+        }
+        else {
+            $kamars = Kamar::all();
+
+        }
         $kamar = \DB::table('kamars')->count('id');
         $user = \DB::table('users')->count('id');
-        $kamars = Kamar::All();
+        // $kamars = Kamar::All();
         // $terpakai = $kamars - $kamar;
         //dd($tanggal);
         return view(

@@ -1,4 +1,4 @@
-@extends('frontend.master',['title' => __('Dashboard')])
+@extends('frontend.master', ['title' => __('Dashboard')])
 
 @section('content')
     <div class="row">
@@ -7,7 +7,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center text-center">
                         <div class="col mr-2">
-                            <div class=" h1 font-weight-bold text-danger text-uppercase mb-1">Informasi Ketersediaan Bed</div>
+                            <div class=" h1 font-weight-bold text-danger text-uppercase mb-1">Informasi Ketersediaan Bed
+                            </div>
                             <div class="h4 mb-0 font-weight-bold text-gray-900">
                                 @php
                                     Carbon\Carbon::setLocale('id');
@@ -31,8 +32,9 @@
             <div class="card">
                 <div class="table-responsive" id="ketersediaan-kamar-grid">
                     <table class="table table-bordered text-center table-stripped table-condensed" width="100%"
-                        cellspacing="0">
-                        <thead class="bg-dashboard-success text-white h4">
+                        cellspacing="0" >
+                        <thead class="bg-dashboard-success text-white h4" id="table_fixed">
+                            <th width="100px">NO.</th>
                             <th width="100px">NAMA KAMAR</th>
                             <th width="150px">KELAS</th>
                             <!-- <th>SLOT PRIA</th> -->
@@ -43,9 +45,11 @@
                             <th width="150px">KETERANGAN</th>
                             <!-- <th>TERAKHIR UPDATE</th> -->
                         </thead>
-                        <tbody>
+                        <tbody id="table_scroll" class="contain">
                             @foreach ($kamar as $key => $kmr)
-                                <tr @if ($key % 2 == 1) class="bg-dashboard-success text-white" @else class="text-gray-900" @endif>
+                                <tr
+                                    @if ($key % 2 == 1) class="bg-dashboard-success text-white" @else class="text-gray-900" @endif>
+                                    <td class="h4 mb-0 font-weight">{{ $key+1 }}</td>
                                     <td class="h4 mb-0 font-weight-normal">{{ strtoupper($kmr->catkamar->label) }}</td>
                                     <td class="h4 mb-0 font-weight">{{ $kmr->kelas->label }}</td>
                                     <td class="h4 mb-0 font-weight">{{ $kmr->total_kamar }}</td>
@@ -54,7 +58,7 @@
                                     <td class="h4 mb-0 font-weight">{{ $kmr->total_terisi }}</td>
                                     <td class="h4 mb-0 font-weight">{{ $kmr->sisa_kamar }}</td>
                                     <td class="h4 mb-0 font-weight">{{ $kmr->keterangan }}</td>
-                                    
+
 
                                 </tr>
                             @endforeach
@@ -105,7 +109,6 @@
         .table-responsive {
             overflow-y: auto;
         }
-
     </style>
 @endpush
 @push('js')
@@ -121,15 +124,18 @@
             ekt.webkitRequestFullscreen();
         }
     </script>
-   <!--  <script>
+    <script>
         var $el = $(".table-responsive");
 
         function anim() {
             var st = $el.scrollTop();
             var sb = $el.prop("scrollHeight") - $el.innerHeight();
             $el.animate({
+
                 scrollTop: st < sb / 2 ? sb : 0
-            }, 6000, anim);
+                // scrollTop: st + 1
+            }, 8000, anim);
+
         }
 
         function stop() {
@@ -137,48 +143,5 @@
         }
         anim();
         $el.hover(stop, anim);
-    </script> -->
-
-    <script>
-        
-        $(document).ready(function() {
-  
-  pageScroll();
-  $("#contain").mouseover(function() {
-    clearTimeout(my_time);
-  }).mouseout(function() {
-    pageScroll();
-  });
-  
-  getWidthHeader('id_header','id_scroll');
-  
-});
-
-var my_time;
-function pageScroll() {
-    var objDiv = document.getElementById("ketersediaan-kamar-grid");
-  objDiv.scrollTop = objDiv.scrollTop + 1;  
-  if ((objDiv.scrollTop + 100) == objDiv.scrollHeight) {
-    objDiv.scrollTop = 0;
-  }
-  my_time = setTimeout('pageScroll()', 25);
-}
-
-function getWidthHeader(id_header) {
-  var colCount = 0;
-  $('#' + id_scroll + ' tr:nth-child(1) td').each(function () {
-    if ($(this).attr('colspan')) {
-      colCount += +$(this).attr('colspan');
-    } else {
-      colCount++;
-    }
-  });
-  
-  for(var i = 1; i <= colCount; i++) {
-    var th_width = $('#' + id_scroll + ' > tbody > tr:first-child > td:nth-child(' + i + ')').width();
-    $('#' + id_header + ' > thead th:nth-child(' + i + ')').css('width',th_width + 'px');
-  }
-}
-
     </script>
 @endpush

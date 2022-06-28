@@ -40,14 +40,12 @@
                             <th scope="col">Quick Update</th>
                             <th scope="col">Nama Kamar</th>
                             <th scope="col">Kelas</th>
-                            <!-- <th scope="col">Slot Pria</th> -->
-                            <!-- <th scope="col">Slot Wanita</th> -->
                             <th scope="col">Kuota Kamar</th>
                             <th scope="col">Kamar Terisi</th>
                             <th scope="col">Sisa Kamar</th>
                             <th scope="col">Keterangan</th>
                             @if (auth()->user()->admin == 1)
-                            <th scope="col">Action</th>
+                                <th scope="col">Action</th>
                             @endif
                         </tr>
                     </thead>
@@ -66,23 +64,23 @@
                                 <td>{{ $item->total_kamar }}</td>
                                 <td>{{ $item->total_terisi }}</td>
                                 <td>{{ $item->sisa_kamar }}</td>
-                                <td>{{ $item->keterangan}}</td>
-                            
+                                <td>{{ $item->keterangan }}</td>
 
-                               @if (auth()->user()->admin == 1)
-                                <td>
-                                    <a href="{{ route('kamar.edit', $item->id) }}"
-                                        class="btn btn-success btn-sm">Edit</a>
-                                    
+
+                                @if (auth()->user()->admin == 1)
+                                    <td>
+                                        <a href="{{ route('kamar.edit', $item->id) }}"
+                                            class="btn btn-success btn-sm">Edit</a>
+
                                         <form method="POST" action="{{ route('kamar.destroy', [$item->id]) }}"
                                             class="d-inline" onsubmit="return confirm('Yakin Hapus Data ?')">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                                         </form>
-                                   
-                                </td>
-                                 @endif
+
+                                    </td>
+                                @endif
                             </tr>
                             <div class="modal fade" id="editModal-{{ $item->id }}" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -91,8 +89,7 @@
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel"><strong> Update Stok Kamar
                                                     {{ $item->catkamar->label }}</strong></h5>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
@@ -106,35 +103,6 @@
                                                         value="{{ old('nama_ruang') ? old('nama_ruang') : $item->nama_ruang }}">
                                                     <input type="hidden" name="kelas_id"
                                                         value="{{ old('kelas_id') ? old('kelas_id') : $item->kelas_id }}">
-
-                                                    <!--  <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label for="pria">Slot Pria</label>
-                                                                        <input type="text" name="pria"
-                                                                            class="form-control @error('pria') is-invalid @enderror"
-                                                                            value="{{ old('pria') ? old('pria') : $item->pria }}"
-                                                                            required>
-                                                                        @error('pria')
-        <div class="invalid-feedback">
-                                                                                            {{ $message }}
-                                                                                        </div>
-    @enderror
-                                                                    </div>
-                                                                </div> -->
-                                                    <!--   <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label for="wanita">Slot Wanita</label>
-                                                                        <input type="text" name="wanita"
-                                                                            class="form-control @error('wanita') is-invalid @enderror"
-                                                                            value="{{ old('wanita') ? old('wanita') : $item->wanita }}"
-                                                                            required>
-                                                                        @error('wanita')
-        <div class="invalid-feedback">
-                                                                                            {{ $message }}
-                                                                                        </div>
-    @enderror
-                                                                    </div>
-                                                                </div> -->
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <label for="total_terisi">Total Terisi</label>
@@ -149,27 +117,13 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label for="sisa_kamar">Sisa Kamar</label>
-                                                            <input type="text" name="sisa_kamar"
-                                                                class="form-control @error('sisa_kamar') is-invalid @enderror"
-                                                                value="{{ old('sisa_kamar') ? old('sisa_kamar') : $item->sisa_kamar }}"
-                                                                required>
-                                                            @error('sisa_kamar')
-                                                                <div class="invalid-feedback">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
-                                                        </div>
-                                                    </div> --}}
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <label for="total_kamar">Kuota</label>
                                                             <input type="text" name="total_kamar"
                                                                 class="form-control @error('total_kamar') is-invalid @enderror"
                                                                 value="{{ old('total_kamar') ? old('total_kamar') : $item->total_kamar }}"
-                                                                required>
+                                                                required/>
                                                             @error('total_kamar')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -178,49 +132,21 @@
                                                         </div>
                                                     </div>
 
-
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                           <label for="keterangan">Keterangan</label>
-                                                        </div>
-
-                                                    <div class="col">
-                                                        <div class="form-group">
-                                                        <textarea name="keterangan" id="keterangan" cols="45" rows="1"    
-                                                        class="form-control @error('keterangan') is-invalid @enderror"
-                                                                value="{{ old('keterangan') ? old('keterangan') : $item->keterangan }}"
-                                                                required>
-                                                            @error('keterangan')
-                                                                <div class="invalid-feedback">
-                                                                    {{ $message }}
-                                                                </div>
-                                                            @enderror
-                                                        </textarea>
-                                                        </div>
-                                                    </div>
-
-                                                    <!-- <div class="col">
-                                                    <div class="form-group">
-                                                        <textarea name="keterangan" id="keterangan" cols="30" rows="3"></textarea>
-                                                        </div>
-                                                    </div>
- -->
-                                                   <!--  <div class="col-md-12">
-                                                        <div class="form-group">
                                                             <label for="keterangan">Keterangan</label>
-                                                             <input type="text" name="keterangan" rows="5"
-                                                                class="form-control @error('keterangan') is-invalid @enderror"
-                                                                value="{{ old('keterangan') ? old('keterangan') : $item->keterangan }}"
-                                                                required>
+                                                            <textarea name="keterangan" id="keterangan" rows="5"
+                                                                class="form-control @error('keterangan') is-invalid @enderror" required>{{ old('keterangan') ? old('keterangan') : $item->keterangan }}
+                                                            
+                                                            </textarea>
                                                             @error('keterangan')
-                                                                <div class="invalid-feedback">
-                                                                    {{ $message }}
-                                                                </div>
+                                                                <div class="invalid-feedback"> {{ $message }} </div>
                                                             @enderror
                                                         </div>
-                                                </div> -->
-                                               
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
                                             </form>
                                         </div>
                                     </div>

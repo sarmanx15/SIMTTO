@@ -1,4 +1,4 @@
-@extends('layouts.app',['title' => __('Edit Kamar')])
+@extends('layouts.app', ['title' => __('Edit Kamar')])
 @section('UpdateKamar')
     active
 @endsection
@@ -59,30 +59,30 @@
                             </div>
                         </div>
 
-                       <!--  <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="pria">Slot Pria</label>
-                                <input type="text" name="pria" class="form-control @error('pria') is-invalid @enderror"
-                                    value="{{ old('pria') ? old('pria') : $kamar->pria }}" required>
-                                @error('pria')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div> -->
-                       <!--  <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="wanita">Slot Wanita</label>
-                                <input type="text" name="wanita" class="form-control @error('wanita') is-invalid @enderror"
-                                    value="{{ old('wanita') ? old('wanita') : $kamar->wanita }}" required>
-                                @error('wanita')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                        </div> -->
+                        <!--  <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="pria">Slot Pria</label>
+                                                    <input type="text" name="pria" class="form-control @error('pria') is-invalid @enderror"
+                                                        value="{{ old('pria') ? old('pria') : $kamar->pria }}" required>
+                                                    @error('pria')
+        <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+    @enderror
+                                                </div>
+                                            </div> -->
+                        <!--  <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="wanita">Slot Wanita</label>
+                                                    <input type="text" name="wanita" class="form-control @error('wanita') is-invalid @enderror"
+                                                        value="{{ old('wanita') ? old('wanita') : $kamar->wanita }}" required>
+                                                    @error('wanita')
+        <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+    @enderror
+                                                </div>
+                                            </div> -->
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="total_terisi">Total Terisi</label>
@@ -138,6 +138,19 @@
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="keterangan">Keterangan</label>
+                                <textarea name="keterangan" id="keterangan" rows="5"
+                                    class="form-control @error('keterangan') is-invalid @enderror"
+                                    >
+                                {{ old('keterangan') ? old('keterangan') : $kamar->keterangan }}
+                                </textarea>
+                                @error('keterangan')
+                                    <div class="invalid-feedback"> {{ $message }} </div>
                                 @enderror
                             </div>
                         </div>
