@@ -68,7 +68,7 @@
 
 
                                 @if (auth()->user()->admin == 1)
-                                    <td>
+                                    <td class="nowarp">
                                         <a href="{{ route('kamar.edit', $item->id) }}"
                                             class="btn btn-success btn-sm">Edit</a>
 
