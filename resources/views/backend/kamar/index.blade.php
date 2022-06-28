@@ -136,7 +136,7 @@
                                                         <div class="form-group">
                                                             <label for="keterangan">Keterangan</label>
                                                             <textarea name="keterangan" id="keterangan" rows="5"
-                                                                class="form-control @error('keterangan') is-invalid @enderror" required>{{ old('keterangan') ? old('keterangan') : $item->keterangan }}
+                                                                class="form-control @error('keterangan') is-invalid @enderror" autofocus>{!! old('keterangan') ? old('keterangan') : $item->keterangan !!}
                                                             
                                                             </textarea>
                                                             @error('keterangan')
