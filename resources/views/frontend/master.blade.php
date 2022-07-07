@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta http-equiv="refresh" content="40">
+    {{-- <meta http-equiv="refresh" content="40"> --}}
     <link href="{{ asset('img') }}/AWS.png" rel="icon" type="image/png">
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

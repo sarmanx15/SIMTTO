@@ -131,15 +131,16 @@
             var st = $el.scrollTop();
             var sb = $el.prop("scrollHeight") - $el.innerHeight();
             $el.animate({
-
                 scrollTop: st < sb / 2 ? sb : 0
-                // scrollTop: st + 1
             }, 8000, anim);
-
+            if (st+1 == sb) {
+                location.reload();
+            }
         }
 
         function stop() {
             $el.stop();
+
         }
         anim();
         $el.hover(stop, anim);
