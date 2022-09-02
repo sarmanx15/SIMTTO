@@ -93,8 +93,8 @@ class CatKamarController extends Controller
     {
         $data = Catkamar::findOrFail($id);
         $data->label = $request->label;
-
-        $data->save();
+        $data->updated_at = \Carbon\Carbon::now();
+        $data->save(['timestamps' => false]);
         activity()->log('Mengedit Data Kategori Kamar [ ' . $data->label . ' ]');
         Alert::success('Sukses', 'Data Berhasil Diupdate');
 

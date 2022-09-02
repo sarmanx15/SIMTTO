@@ -100,7 +100,9 @@ class KelasController extends Controller
         $kelas = Kelas::findOrFail($id);
         $kelas->label = $request->label;
         
-        $kelas->save();
+        $kelas->updated_at = \Carbon\Carbon::now();
+        $kelas->save(['timestamps' => false]);
+
         activity()->log('Mengupdate Data Kelas [ ' . $kelas->label . ' ]');
         Alert::success('Sukses', 'Data Berhasil Diupdate');
 

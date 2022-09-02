@@ -36,6 +36,7 @@
                             <th scope="col">No.</th>
                             <th scope="col">Nama Kelas</th>
                             <th scope="col">Jumlah Kamar</th>
+                            <th scope="col">Updated</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -45,6 +46,7 @@
                                 <th scope="row">{{ ++$key }}</th>
                                 <td>{{ $item->label }}</td>
                                 <td>{{ count($item->kamar) }}</td>
+                                <td>{{ $item->updated_at }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-sm" data-toggle="modal"
                                         data-target="#editModal-{{ $item->id }}">

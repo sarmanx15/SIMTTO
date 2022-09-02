@@ -44,6 +44,7 @@
                             <th scope="col">Kamar Terisi</th>
                             <th scope="col">Sisa Kamar</th>
                             <th scope="col">Keterangan</th>
+                            <th scope="col">Update</th>
                             @if (auth()->user()->admin == 1)
                                 <th scope="col">Action</th>
                             @endif
@@ -65,6 +66,7 @@
                                 <td>{{ $item->total_terisi }}</td>
                                 <td>{{ $item->sisa_kamar }}</td>
                                 <td>{{ $item->keterangan }}</td>
+                                <td>{{ $item->updated_at }}</td>
 
 
                                 @if (auth()->user()->admin == 1)

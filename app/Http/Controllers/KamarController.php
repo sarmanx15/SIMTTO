@@ -139,8 +139,9 @@ class KamarController extends Controller
         $kamar->sisa_kamar = $request->total_kamar - $request->total_terisi;
         
         $kamar->keterangan = $request->keterangan;
+        $kamar->updated_at = \Carbon\Carbon::now();
+        $kamar->save(['timestamps' => false]);
 
-        $kamar->save();
         activity()->log('Mengedit Data Kamar [ ' . $kamar->catkamar->label . ' ]');
         Alert::success('Congrats', 'Data Berhasil Diupdate');
 
